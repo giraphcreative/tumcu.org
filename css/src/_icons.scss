@@ -16,6 +16,7 @@
 	
 		img {
 			padding: 10px 20px;
+			width: 100%;
 
 			@include respond-to( 450px ) {
 				padding: 40px 20px;
