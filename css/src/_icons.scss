@@ -19,7 +19,7 @@
 			width: 100%;
 
 			@include respond-to( 450px ) {
-				padding: 40px 20px;
+				padding: 20px;
 				width: 50%;
 				float: left;
 
@@ -30,6 +30,7 @@
 
 			@include respond-to( 800px ) {
 				width: 25%;
+				padding: 30px 20px;
 
 				&:nth-child(3), &:nth-child(7) {
 					clear: none;
