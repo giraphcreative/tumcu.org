@@ -94,7 +94,7 @@ header {
 
 				&:hover, &.open {
 					a {
-						background-color: rgba( lighten( $navy, 20% ), .2 );
+						background-color: rgba( lighten( $red, 20% ), .2 );
 					}
 
 					ul.sub-menu {
@@ -113,7 +113,7 @@ header {
 						left: 0;
 						top: 55px;
 						width: 100%;
-						background-color: rgba( lighten( $navy, 5% ), .8 );
+						background-color: rgba( lighten( $red, 5% ), .8 );
 						@include clearfix;
 					}
 
@@ -131,7 +131,7 @@ header {
 								padding: 15px 10px;
 
 								&:hover {
-									background: rgba( $navy, 1 );
+									background: rgba( $red, 1 );
 								}
 							}
 
