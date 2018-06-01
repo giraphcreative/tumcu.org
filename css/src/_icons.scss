@@ -1,7 +1,7 @@
 
 
 .icons {
-	padding: 10px 0;
+	padding: 10px;
 	@include clearfix;
 
 	a {
@@ -16,7 +16,7 @@
 		}
 	
 		img {
-			padding: 10px 20px;
+			padding: 10px;
 			width: 100%;
 
 			@include respond-to( 450px ) {
