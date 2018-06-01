@@ -107,6 +107,7 @@ header {
 				ul.sub-menu {
 					display: none;
 					margin-bottom: 3px;
+					box-shadow: 0 20px 20px rgba( darken( $red, 20% ), .4 );
 
 					@include respond-to( $bp-m ) {
 						position: absolute;
