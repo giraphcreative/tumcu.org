@@ -2,6 +2,7 @@
 
 .icons {
 	padding: 10px 0;
+	@include clearfix;
 
 	a {
 		* {			
