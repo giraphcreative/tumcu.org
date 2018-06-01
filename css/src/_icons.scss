@@ -1,0 +1,40 @@
+
+
+.icons {
+	padding: 10px 0;
+
+	a {
+		* {			
+			opacity: 1;
+			transition: 300ms all ease-in-out;			
+		}
+
+		&:hover * {
+			text-decoration: none;
+			opacity: .9;
+		}
+	
+		img {
+			padding: 10px 20px;
+
+			@include respond-to( 450px ) {
+				padding: 40px 20px;
+				width: 50%;
+				float: left;
+
+				&:nth-child(3), &:nth-child(5), &:nth-child(7), &:nth-child(9) {
+					clear: left;
+				}
+			}
+
+			@include respond-to( 800px ) {
+				width: 25%;
+
+				&:nth-child(3), &:nth-child(7) {
+					clear: none;
+				}
+			}
+		}
+	}
+}
+

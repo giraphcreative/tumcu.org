@@ -1,0 +1,68 @@
+
+
+.quarter, .third, .half, .two-third, .three-quarter, .twenty, .forty, .thirty {
+	padding: 20px;
+}
+
+@include respond-to( 768px ) {
+	.quarter, .third, .half, .two-third, .three-quarter, .twenty, .forty, .thirty {
+		float: left;
+	}
+
+	.quarter {
+		width: 23%;
+		margin: 0 1%;
+	}
+
+	.third {
+		width: 31%;
+		margin: 0 1%;
+	}
+
+	.two-third {
+		width: 65%;
+		margin: 0 1%;
+	}
+
+	.half {
+		width: 48%;
+		margin: 0 1%;
+	}
+
+	.three-quarter {
+		width: 73%;
+		margin: 0 1%;
+	}
+
+	.twenty {
+		width: 18%;
+		margin: 0 1%;
+	}
+
+	.forty {
+		width: 38%;
+		margin: 0 1%;
+	}
+
+	.thirty {
+		width: 28%;
+		margin: 0 1%;
+	}
+}
+
+
+.text-center {
+	text-align: center;
+}
+
+
+.text-right {
+	text-align: right;
+}
+
+
+img.aligncenter {
+	display: block;
+	margin: 0 auto;
+}
+

@@ -1,0 +1,17 @@
+/*
+Theme Name: VA United Methodist CU
+Author: Giraph Creative
+Author URI: http://giraphcu.com
+Description: A custom theme created for Virginia United Methodist Credit Union.
+Version: 0.0.1
+License: MIT
+*/
+
+
+/*
+
+So, this file is empty - because we're using the Sass! Get grunt started up and edit files in the /css/src/ directory to edit the styles of this development theme. It'll compile the styles and enable functions, variables and mixins in your CSS. 
+
+I've even added a grunt plugin to automatically add vendor prefixes so you can just write future, standard CSS and it'll get adjusted based on current browser standards, which are constantly evolving so it's tough to keep up with what's standard. The autoprefixer plugin gets updated based on existing standards, and automatically adds the correct prefixes for the CSS properties you're trying to use, so you can just write beautiful CSS.
+
+*/

@@ -1,0 +1,13 @@
+
+
+.calculator-compare, .calculator-loan {
+	margin-top: 10px;
+	background: $grey-light;
+	border: 1px solid $grey;
+
+	input {
+		display: block;
+		width: 100%;
+		border: 1px solid $grey;
+	}
+}

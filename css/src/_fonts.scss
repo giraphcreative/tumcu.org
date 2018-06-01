@@ -1,0 +1,81 @@
+
+
+@font-face {
+	font-family: 'Woodford Bourne Thin';
+	src:url('#{$font_path}woodford-bourne-thin.woff2') format('woff2'),
+		url('#{$font_path}/woodford-bourne-thin.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Woodford Bourne Thin Italic';
+	src:url('#{$font_path}/woodford-bourne-thin-italic.woff2') format('woff2'),
+		url('#{$font_path}/woodford-bourne-thin-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Woodford Bourne';
+	src:url('#{$font_path}/woodford-bourne-regular.woff2') format('woff2'),
+		url('#{$font_path}/woodford-bourne-regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Woodford Bourne Italic';
+	src:url('#{$font_path}/woodford-bourne-italic.woff2') format('woff2'),
+		url('#{$font_path}/woodford-bourne-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Woodford Bourne Bold';
+	src:url('#{$font_path}/woodford-bourne-bold-italic.woff2') format('woff2'),
+		url('#{$font_path}/woodford-bourne-bold-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Woodford Bourne Bold Italic';
+	src:url('#{$font_path}/woodford-bourne-bold-italic.woff2') format('woff2'),
+		url('#{$font_path}/woodford-bourne-bold-italic.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+
+@mixin font-thin {
+	font-family: "Woodford Bourne Thin", sans-serif;
+}
+
+
+@mixin font-thin-italic {
+	font-family: "Woodford Bourne Thin Italic", sans-serif;
+}
+
+
+@mixin font {
+	font-family: "Woodford Bourne", sans-serif;
+}
+
+
+@mixin font-italic {
+	font-family: "Woodford Bourne Italic", sans-serif;
+}
+
+
+@mixin font-bold {
+	font-family: "Woodford Bourne Bold", sans-serif;
+}
+
+
+@mixin font-bold-italic {
+	font-family: "Woodford Bourne Bold Italic", sans-serif;
+}
+

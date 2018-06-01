@@ -1,0 +1,102 @@
+
+
+.emergency-bar-container {
+	background: $grey-light;
+	padding: 10px 10px 7px 10px;
+	color: $grey-dark;
+	@include clearfix;
+	display: none;
+	position: relative;
+	z-index: 200;
+	border-bottom: 1px solid $grey;
+	text-align: center;
+
+	a {
+		color: $grey;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+
+	&.show {
+		display: block;
+	}
+
+	.fa-close {
+		float: right;
+		margin: 0 0 3px 20px;
+		cursor: hand;
+	}
+
+	&.red {
+		background: lighten( $red, 40% );
+		color: $red;
+		border-bottom: 1px solid $red;
+
+		a {
+			color: $red;
+		}
+	}
+
+	&.orange {
+		background: lighten( $orange, 40% );
+		color: $orange;
+		border-bottom: 1px solid $orange;
+
+		a {
+			color: $orange;
+		}
+	}
+
+	&.yellow {
+		background: lighten( $yellow, 40% );
+		color: $yellow;
+		border-bottom: 1px solid $yellow;
+
+		a {
+			color: $yellow;
+		}
+	}
+
+	&.lime {
+		background: lighten( $lime, 40% );
+		color: $lime;
+		border-bottom: 1px solid $lime;
+
+		a {
+			color: $lime;
+		}
+	}
+
+	&.navy {
+		background: lighten( $navy, 40% );
+		color: $navy;
+		border-bottom: 1px solid $navy;
+
+		a {
+			color: $navy;
+		}
+	}
+
+	&.blue {
+		background: lighten( $blue, 40% );
+		color: $blue;
+		border-bottom: 1px solid $blue;
+
+		a {
+			color: $blue;
+		}
+	}
+
+	&.teal {
+		background: lighten( $teal, 40% );
+		color: $teal;
+		border-bottom: 1px solid $teal;
+
+		a {
+			color: $teal;
+		}
+	}
+}
+

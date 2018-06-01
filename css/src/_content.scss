@@ -1,0 +1,114 @@
+
+
+.container {
+	min-width: 320px;
+	max-width: 1220px;
+	margin: 0 auto;
+	background: white;
+	box-shadow: 0 0 50px $grey-dark;
+	border: 1px solid $grey;
+	border-top: 0;
+	border-bottom: 0;
+	z-index: 100;
+}
+
+.wrap {
+	max-width: 1220px;
+	margin: 0 auto;
+}
+
+.content {
+	border-bottom: 60px solid $red;
+
+	h1, h2, h3, h4, h5, h6 {
+		padding: 6px 0;
+	}
+}
+
+.content-narrow {
+	padding: 40px 20px;
+	max-width: 1024px;
+	margin: 0 auto;
+	@extend .content-style;
+}
+
+.content-wide {
+	@include clearfix;
+	@extend .content-style;
+	background: url(../img/bg-canvas.jpg) center center no-repeat;
+	background-size: cover;
+	padding: 30px 20px;
+
+	@include respond-to( 1024px ) {
+		padding: 50px 40px;
+		font-size: 1.2em;
+		line-height: 1.5em;
+		@include font-thin;
+	}
+
+	&.odd {
+		background: rgba( $grey, .4 );
+	}
+
+	.home & {
+		padding: 0;
+
+		@include respond-to( 768px ) {
+			padding: 10px;
+		}
+
+		@include respond-to( 1024px ) {
+			padding: 10px;
+		}
+	}
+
+	.post-title {
+		border-bottom: 1px solid $red;
+		padding-bottom: 15px;
+		
+		margin-bottom: 10px;
+		@include respond-to( $bp-s ) { margin-bottom: 20px; }
+		@include respond-to( $bp-l ) { margin-bottom: 30px; }
+	}
+
+	&.home-bottom {
+		border-top: 50px solid $red;
+		@include clearfix;
+
+		h2 {
+			text-align: center;
+			color: $red;
+			padding: 20px;
+		}
+
+		@include respond-to( 768px ) {
+			padding: 20px 20px 40px;
+
+			p {
+				padding: 0;
+				width: 30%;
+				float: left;
+				margin: 0 1.5%;
+			}
+		}
+
+		@include respond-to( 1024px ) {
+			padding: 30px 20px 50px;
+		}
+	}
+}
+
+.fluid-width-video-wrapper {
+	margin: 15px 0;
+}
+
+table {
+	width: 100%;
+
+	tr {
+		td {
+			vertical-align: top;
+			padding: 6px 10px;
+		}
+	}
+}

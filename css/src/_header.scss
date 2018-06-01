@@ -1,0 +1,247 @@
+
+
+header {
+	position: relative;
+	background: url(../img/bg-header-border.png) top center no-repeat;
+
+	.logo {
+		padding: 10px 50px 10px 15px;
+
+		@include respond-to( $bp-m ) {
+			float: left;
+			padding: 20px 40px;
+		}
+
+		@include respond-to( $bp-l ) {
+			padding: 40px 50px 20px;
+		}
+	}
+
+	nav {
+		@include clearfix;
+		position: relative;
+
+		button {
+			position: absolute;
+			right: 10px;
+			top: -110px;
+			width: 40px;
+			height: 40px;
+			border: 0;
+			padding: 0;
+			background: white;
+			color: transparent;
+			background: url(../img/icon-menu.png) center center no-repeat;
+			overflow: hidden;
+			text-indent: 1000px;
+			
+			@include respond-to( 400px ) {
+				right: 20px;
+			}
+
+			@include respond-to( $bp-m ) {
+				display: none;
+			}
+		}
+
+		ul.nav-menu {
+			display: none;
+			background: $red;
+			position: relative;
+			z-index: 1000;
+			text-align: center;
+			
+			@include respond-to( $bp-m ) {
+				display: block;
+				@include clearfix;
+			}
+
+			li {
+				@include respond-to( $bp-m ) {
+					box-shadow: none;
+					position: relative;
+					display: inline-block;
+				}
+
+				@include respond-to( $bp-l ) {
+					width: 14%;
+				}
+
+				a {
+					@include font-thin;
+					display: block;
+					padding: 15px 5px;
+					font-size: 22px;
+					line-height: 25px;
+					color: white;
+					text-align: center;
+					text-decoration: none;
+					text-transform: uppercase;
+					width: 100%;
+					transition: 400ms background-color ease-in-out;
+					background-color: transparent;
+
+					@include respond-to( $bp-m ) {
+						display: inline-block;
+						padding: 15px 20px;
+					}
+
+					@include respond-to( $bp-l ) {
+						font-size: 25px;
+						padding: 15px 0;
+					}
+				}
+
+				&:hover, &.open {
+					a {
+						background-color: rgba( lighten( $navy, 20% ), .2 );
+					}
+
+					ul.sub-menu {
+						@include respond-to( $bp-m ) {
+							display: block;
+						}
+					}
+				}
+
+				ul.sub-menu {
+					display: none;
+					margin-bottom: 3px;
+
+					@include respond-to( $bp-m ) {
+						position: absolute;
+						left: 0;
+						top: 55px;
+						width: 100%;
+						background-color: rgba( lighten( $navy, 5% ), .8 );
+						@include clearfix;
+					}
+
+					li {
+						display: block;
+						width: 100%;
+
+						a {
+							padding: 8px 20px;
+							font-size: 15px;
+							line-height: 18px;
+							display: block;
+
+							@include respond-to( $bp-m ) {
+								padding: 15px 10px;
+
+								&:hover {
+									background: rgba( $navy, 1 );
+								}
+							}
+
+							@include respond-to( 1220px ) {
+								padding: 15px 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.search {
+		margin-bottom: 20px;
+		position: relative;
+
+		label {
+			display: none;
+		}
+
+		@include respond-to( 400px ) {
+			margin: 0 20px 20px 20px;
+		}
+
+		@include respond-to( $bp-m ) {
+			position: absolute;
+			top: 65px;
+			right: 40px;			
+			width: 320px;
+			margin: 0;
+		}
+
+		input[type=text] {
+			@include font;
+			display: block;
+			width: 100%;
+			border: 0;
+			padding: 3px 12px 0;
+			font-size: 15px;
+			line-height: 38px;
+			border-top: 1px solid $grey;
+			border-bottom: 1px solid $grey;
+			color: $grey-dark;
+			background-color: transparent;
+			transition: 400ms background-color ease-in-out;
+			text-transform: uppercase;
+			
+			@include respond-to( 400px ) {
+				border: 2px solid $grey-dark;
+			}
+
+			&:focus {
+				background-color: rgba( $grey, .3 );
+				outline: none;
+			}
+		}
+
+		input[type=submit] {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 50px;
+			background: $red url(../img/icon-search.png) center center no-repeat;
+			text-indent: -400px;
+			cursor: pointer;
+			border-radius: 0;
+		}
+	}
+
+	.banking {
+		display: none;
+
+		@include respond-to( 768px ) {
+			display: block;
+			position: absolute;
+			top: 120px;
+			right: 40px;
+	        width: 320px;
+	        background: $red;
+	        padding: 10px 25px;
+	        color: white;
+	        text-transform: uppercase;
+
+	        &:after {
+	        	position: absolute;
+	        	content: '';
+	        	right: 0;
+	        	top: 0;
+	        	bottom: 0;
+	        	width: 50px;
+	        	background: $grey url(../img/icon-arrow-right.png) center center no-repeat;
+	        }
+		}
+    }
+
+    .quick-links {
+    	display: none;
+
+    	select {
+    		max-width: 320px;
+    	}
+
+    	@include respond-to( 768px ) {
+    		display: block;
+    		position: absolute;
+    		top: 175px;
+    		right: 40px;
+    	}
+    }
+
+}

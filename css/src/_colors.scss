@@ -1,0 +1,39 @@
+
+
+// set colors
+$teal: #43A8C6;
+$blue: #2074B1;
+$navy: #0E426A;
+$green: #A2CE4D;
+$lime: #8DC641;
+$orange: #df7e00;
+$red: #BA2025;
+$yellow: #d8cb00;
+$grey: #B3B3B3;
+$grey-light: #B2B1B2;
+$grey-dark: #767878;
+
+
+// breakpoints
+$bp-s: 600px;
+$bp-m: 768px;
+$bp-l: 1024px;
+$bp-xl: 1220px;
+
+
+// add the color names to an array.
+$colors: 'navy', 'blue', 'teal', 'green', 'lime', 'grey', 'grey-light', 'grey-dark';
+
+
+// loop through the array and output background and text color classes.
+$i: 1;
+@each $color in $colors {
+    .bg-#{$color} {
+    	background-color: nth( $colors, $i );
+    }
+    .text-#{$color} { 
+    	color: nth( $colors, $i ); 
+    }
+	$i: $i + 1;
+}
+

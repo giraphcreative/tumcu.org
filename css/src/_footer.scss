@@ -1,0 +1,211 @@
+
+
+.footer-image {
+	img {
+		display: block;
+	}
+}
+
+
+footer {
+	background: $grey-dark;
+	background-size: cover;
+	border-top: 5px solid white;
+	color: white;
+	padding: 20px 0;
+	font-size: .9em;
+	line-height: 1.8em;
+	@include font-thin;
+	@include clearfix;
+
+	@include respond-to( $bp-l ) {
+		padding: 30px 20px;
+	}
+
+	h5 {
+		font-size: 1em;
+		color: $grey-light;
+
+		@include respond-to( $bp-m ) {
+			font-size: 1.2em;
+		}
+	}
+
+
+	.column {
+		padding: 20px;
+
+		&.first {
+			h5 {
+				@include font;
+				font-size: 1.1em;
+				color: white;
+
+				@include respond-to( $bp-l ) {
+					font-size: 1.4em; 			
+				}
+			}
+		}
+
+		@include respond-to( $bp-s ) {
+			float: left;
+			width: 50%;
+			margin: 0;
+			padding: 3px 20px;
+			
+			&.first {
+				padding-top: 0;
+			}
+
+			&.small {
+				clear: left;
+			}
+		}
+
+		@include respond-to( $bp-l ) {
+			width: 13%;
+			border-right: 1px solid white;
+			min-height: 250px;
+			padding: 3px 20px;
+
+			&.first {
+				width: 35%;
+				border-right: 0;
+			}
+
+			&.small {
+				clear: none;
+			}
+
+			&.last {
+				border-right: 0;
+			}
+		}
+
+		@include respond-to( $bp-xl ) {
+			width: 13%;
+			border-right: 1px solid white;
+			min-height: 260px;
+
+			&.first {
+				width: 34%;
+				border-right: 0;
+			}
+
+			&.small {
+				clear: none;
+			}
+
+			&.last {
+				border-right: 0;
+			}
+		}
+
+		ul {
+			li {
+				a {
+					display: block;
+					color: white;
+				}
+			}
+		}
+	}
+
+	p {
+		padding: 0;
+	}
+}
+
+
+.colophon {
+	@include clearfix;
+
+	@include respond-to( 600px ) {
+		padding: 10px 20px;
+	}
+
+	.column {
+		@include font;
+		font-size: .8em;
+		line-height: 1.3em;
+		clear: both;
+		padding: 20px;
+		color: $grey-dark;
+		transition: color 400ms ease-in-out;
+
+		&:hover {
+			color: black;
+		}
+
+		@include respond-to( $bp-s ) {
+			clear: none;
+			width: 50%;
+			float: left;
+		}
+
+		@include respond-to( $bp-m ) {
+			width: 33%;
+		}
+
+		@include respond-to( $bp-l ) {
+			width: 35%;
+		}
+
+		&.links {
+			font-size: 1em;
+			width: auto;
+			float: none;
+
+			a {
+				color: black;
+			}
+
+			img {
+				float: right;
+			}
+
+			@include respond-to( $bp-s ) {
+				clear: both;
+			}
+
+			@include respond-to( $bp-m ) {
+				clear: none;
+			}
+
+			@include respond-to( $bp-l ) {
+				float: left;
+				width: 30%;
+			}
+		}
+	}
+
+	img {
+		float: right;
+		max-width: 30%;
+		margin: 0 0 10px 10px;
+
+		@include respond-to( 768px ) {
+			float: left;
+			margin: 0 10px 10px 0;
+		}
+	}
+
+	.ada-disclaimer {
+		@include clearfix;
+		display: block;
+		font-size: .85em;
+		text-align: center;
+		border-top: 1px solid #eee;
+		color: $grey-dark;
+		transition: color 400ms ease-in-out;
+
+		&:hover {
+			color: black;
+		}
+
+		@include respond-to( 768px ) {
+			padding: 20px;
+		}
+	}
+}
+

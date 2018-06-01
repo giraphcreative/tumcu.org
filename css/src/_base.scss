@@ -1,0 +1,198 @@
+
+
+body {
+	margin: 0;
+	@include font;
+	font-size: 18px;
+	line-height: 25px;
+	color: $grey-dark;
+	background: $grey-light;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	@include font-thin;
+	line-height: 1.2em;
+}
+
+h1 {
+	font-size: 2.2em;
+	text-transform: uppercase;
+	color: $red;
+
+	span {
+		opacity: .7;
+	}
+}
+
+h2 {
+	font-size: 2em;
+}
+
+h3 {
+	font-size: 1.8em;
+}
+
+h4 {
+	font-size: 1.6em;
+}
+
+h5 {
+	font-size: 1.3em;
+}
+
+h6 {
+	font-size: 1.1em;
+}
+
+p {
+	padding: 8px 0;
+}
+
+strong {
+	font-weight: bold;
+}
+
+a {
+	color: $red;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+input[type=text], input[type=search], select {
+	@include font-thin;
+	display: inline-block;
+	padding: 6px 12px;
+	max-width: 100%;
+	font-size: 1.2em;
+	border: 1px solid #ccc;
+}
+
+button, input[type=submit], .fasc-button {
+	@include font-thin;
+	display: inline-block;
+	padding: 6px 20px;
+	max-width: 100%;
+	font-size: 1.2em;
+	background: $red;
+	border: 0;
+	color: white;
+	text-transform: uppercase;
+	border-radius: 10px;
+}
+
+img {
+	&.alignleft {
+		float: left;
+		margin: 0 10px 10px 0;
+	}
+
+	&.alignright {
+		float: right;
+		margin: 0 0 10px 10px;
+	}
+}
+
+
+.content-style {
+	ol, ul {
+		padding: 5px 0 5px 35px;
+
+		li {
+			padding: 3px 0;
+		}
+
+		&.gform_fields {
+			padding: 5px 0;
+		}
+	}
+
+	ul {
+		list-style-type: disc;
+	}
+
+	ol {
+		list-style-type: decimal;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		padding: 10px 0 5px;
+	}
+
+	blockquote {
+		padding: 10px 25px;
+		@include font;
+		font-style: italic;
+		font-size: 1.2em;
+		line-height: 1.5em;
+		color: $grey;
+		border-left: 3px solid lighten( $grey, 25% );
+		margin: 10px 0 10px 20px;
+	}
+
+	hr {
+		border: 0;
+		border-bottom: 1px solid lighten( $red, 25% );
+		padding: 0;
+		margin: 10px 0;
+		
+		@include respond-to( $bp-s ) {
+			margin: 20px 0;
+		}
+		
+		@include respond-to( $bp-l ) {
+			margin: 30px 0;
+		}
+	}
+
+	.postmeta {
+		margin-top: 15px;
+		padding: 15px 0;
+		border-top: 1px solid #ccc;
+	}
+
+	.quiet {
+		color: #999;
+		font-style: italic;
+
+		a {
+			color: #777;
+		}
+	}
+	
+}
+
+.pagination {
+	border-top: 1px solid lighten( $grey, 30% );
+	padding: 15px 0;
+	text-align: center;
+	font-size: 15px;
+	line-height: 15px;
+	background: lighten( $grey, 35% );
+	@include font;
+
+	@include respond-to( 768px ) {
+		padding: 40px 0;
+	}
+
+	a {
+		padding: 7px 12px;
+		background: $grey;
+		color: white;
+		text-decoration: none;
+		display: inline-block;
+
+		&:hover {
+			background: lighten( $grey, 5% );
+		}
+	}
+
+	.current {
+		padding: 7px 12px;
+		display: inline-block;
+		background: lighten( $grey, 5% );
+	}
+}
+

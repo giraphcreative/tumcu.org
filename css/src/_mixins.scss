@@ -1,0 +1,31 @@
+
+
+// responsive mixin
+@mixin respond-to( $breakpoint ) {
+    @media only screen and (min-width: $breakpoint) { @content; }
+}
+
+
+// Clearfix mixin
+@mixin clearfix {
+	zoom: 1;
+
+	&:before, &:after { 
+		content: ""; 
+		display: table;
+	}
+
+	&, &:before, &:after { clear: both; }
+}
+
+
+@mixin wrap( $max-width ) {
+	max-width: $max-width;
+	margin: 0 auto;
+}
+
+
+@mixin wrap-main {
+	@include wrap( 1220px );
+}
+
