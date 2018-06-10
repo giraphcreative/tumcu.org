@@ -52,6 +52,8 @@
 
 	.home & {
 		padding: 0;
+		background: url(../img/bg-home-videos.jpg) fixed no-repeat;
+		background-size: cover;
 
 		@include respond-to( 768px ) {
 			padding: 10px;
