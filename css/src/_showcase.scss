@@ -45,26 +45,55 @@
 			top: 10%;
 			right: 60px;
 			left: 60px;
-			background: white;
-			opacity: .8;
-			padding: 12px;
-			border-radius: 15px;
-			border-top-left-radius: 0;
+			bottom: 0;
+			color: white;
+			pointer-events: none;
+			z-index: 200;
 
 			@include respond-to( 768px ) {
-				top: 15%;
-				left: 10%;
-				right: 50%;
-				padding: 25px;
+				top: 10%;
+			}
+
+			@include respond-to( 1220px ) {
+				top: 100px;
+				left: 80px;
+			}
+
+			.wrap {
+				@include respond-to( 768px ) {
+					padding-right: 280px;
+				}
+				@include respond-to( 1024px ) {
+					padding-right: 380px;
+				}
+				@include respond-to( 1220px ) {
+					padding-right: 580px;
+				}
+			}
+		}
+
+		video {
+			display: none;
+
+			@include respond-to( 768px ) {
+				display: block;				
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				z-index: 100;
+				background-size: cover; 
 			}
 		}
 		
 		h1 {
 			font-weight: 700;
 			padding: 0;
-
 			font-size: 18px;
-			@include respond-to( 768px ) { font-size: 22px; }
+
+			@include respond-to( 768px ) { 
+				font-size: 32px;
+			}
 		}
 
 		h2 {
@@ -72,6 +101,11 @@
 			padding: 0;
 			font-size: 13px;
 			line-height: 20px;
+
+			@include respond-to( 768px ) {
+				font-size: 20px;
+				line-height: 28px;
+			}
 		}
 	}
 

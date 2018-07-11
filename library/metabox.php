@@ -29,25 +29,45 @@ function page_metaboxes( $meta_boxes ) {
             'sortable' => true, // beta
         )
     ) );
-
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
-        'name' => 'Image/Video',
-        'id'   => 'image',
-        'type' => 'file',
-        'preview_size' => array( 200, 100 )
+        'name' => 'Title',
+        'description' => 'Enter a slide title.',
+        'id'   => 'title',
+        'type' => 'text'
     ) );
-
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
-        'name' => 'Alt text',
-        'desc' => 'Specify alt text for this slide.',
-        'id'   => 'alt-text',
-        'type' => 'text',
+        'name' => 'Subtitle',
+        'description' => 'Enter the slide content.',
+        'id'   => 'subtitle',
+        'type' => 'wysiwyg',
+        'options' => array (
+            'textarea_rows' => 8
+        )
     ) );
-
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Link',
+        'description' => 'Enter a slide link.',
         'id'   => 'link',
-        'type' => 'text',
+        'type' => 'text'
+    ) );
+    $showcase_metabox->add_group_field( $showcase_metabox_group, array(
+        'name' => 'Image/Video',
+        'description' => 'Select an image or paste in a video URL.',
+        'id'   => 'image',
+        'type' => 'file',
+        'preview_size' => array( 350, 150 )
+    ) );
+    $showcase_metabox->add_group_field( $showcase_metabox_group, array(
+        'name' => 'Video URL (mp4)',
+        'description' => 'Select a video in mp4 format for the background of the slide.',
+        'id'   => 'video_mp4',
+        'type' => 'file'
+    ) );
+    $showcase_metabox->add_group_field( $showcase_metabox_group, array(
+        'name' => 'Video URL (webm)',
+        'description' => 'Select a video in webm format for the background of the slide.',
+        'id'   => 'video_webm',
+        'type' => 'file'
     ) );
 
 
