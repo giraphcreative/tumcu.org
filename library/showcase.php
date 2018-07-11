@@ -18,7 +18,7 @@ function the_showcase( $height = 600 ) {
 				$title = ( isset( $slide["title"] ) ? $slide["title"] : '' );
 				$subtitle = ( isset( $slide["subtitle"] ) ? $slide["subtitle"] : '' );
 				$link = ( isset( $slide["link"] ) ? $slide["link"] : '' );
-				$video = ( isset( $slide["video_mp4"] ) && isset( $slide["video_webm"] ) ? '<video playsinline autoplay muted loop poster="' . $slide["image"] . '" class="bgvid">
+				$video = ( isset( $slide["video_mp4"] ) && isset( $slide["video_webm"] ) ? '<video playsinline autoplay muted loop controls poster="' . $slide["image"] . '" class="bgvid">
     <source src="' . $slide["video_webm"] . '" type="video/webm">
     <source src="' . $slide["video_mp4"] . '" type="video/mp4">
 </video>' : '' );
