@@ -44,12 +44,13 @@
 		<div class="quick-links">
 			<?php
 			$quick_links = wp_get_nav_menu_items( 9 );
+			//print_r( $quick_links );
 			?>
 			<select>
 				<option>Quick Links</option>
 				<?php
 				foreach ( $quick_links as $ql ) {
-					?><option value="<?php print $ql->url ?>"><?php print $ql->post_title ?></option><?php
+					?><option value="<?php print $ql->url ?>"><?php print $ql->title ?></option><?php
 				}
 				?>
 			</select>
