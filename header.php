@@ -11,6 +11,15 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3721994-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-3721994-1');
+</script>
+
 <!--[if lt IE 9]>
 <script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 <![endif]-->
@@ -44,7 +53,6 @@
 		<div class="quick-links">
 			<?php
 			$quick_links = wp_get_nav_menu_items( 9 );
-			//print_r( $quick_links );
 			?>
 			<select>
 				<option>Quick Links</option>

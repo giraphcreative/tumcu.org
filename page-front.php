@@ -31,6 +31,31 @@ get_header();
 
 	<?php the_footer_image(); ?>
 
+	<?php 
+	// the query
+	$the_query = new WP_Query( array(
+		'posts_per_page' => 3,
+	)); 
+	?>
+	
+	<div class="recent-posts content-wide group">
+		<h2>Recent Blog Posts</h2>
+	<?php if ( $the_query->have_posts() ) : ?>
+		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+		<div class="third">
+			<h4><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h4>
+			<?php the_excerpt(); ?>
+		</div>
+		<?php endwhile; ?>
+		<?php wp_reset_postdata(); ?>
+		<div class="group buttons text-center">
+			<a href="/blog" class="btn">Read More Articles</a>
+		</div>
+	</div>
+	<?php else : ?>
+	<p><?php __('No News'); ?></p>
+	<?php endif; ?>
+
 <?php
 
 get_footer();

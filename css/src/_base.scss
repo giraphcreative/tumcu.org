@@ -70,7 +70,7 @@ input[type=text], input[type=search], select {
 	border: 1px solid #ccc;
 }
 
-button, input[type=submit], .fasc-button {
+button, input[type=submit], .fasc-button, .btn {
 	@include font-thin;
 	display: inline-block;
 	padding: 6px 20px;

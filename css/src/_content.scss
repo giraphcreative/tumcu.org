@@ -114,3 +114,17 @@ table {
 		}
 	}
 }
+
+.recent-posts {
+	border-top: 30px solid $red;
+
+	h2 {
+		text-align: center;
+		padding-top: 20px;
+		color: $red;
+	}
+
+	.buttons {
+		padding: 0 0 30px;
+	}
+}
