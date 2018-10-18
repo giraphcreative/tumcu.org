@@ -148,7 +148,7 @@ footer {
 		}
 
 		@include respond-to( $bp-l ) {
-			width: 35%;
+			width: 30%;
 		}
 
 		&.links {
@@ -174,7 +174,7 @@ footer {
 
 			@include respond-to( $bp-l ) {
 				float: left;
-				width: 30%;
+				width: 40%;
 			}
 		}
 	}
