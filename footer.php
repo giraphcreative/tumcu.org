@@ -48,7 +48,7 @@
 			<img src="<?php bloginfo( 'template_url' ); ?>/img/logo-equal-housing.png" alt="Equal Housing Lender Logo">Equal Housing Lender - We do business in accordance with the Federal Fair Housing Law and the Equal Housing Opportunity Act.
 		</div>
 		<div class="column links">
-			<a href="https://www.facebook.com/unitedmethodistchurch/" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-facebook.png" class="alignright" alt="Visit us on Facebook."></a>
+			<a href="https://www.facebook.com/TUMCreditUnion/" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-facebook.png" class="alignright" alt="Visit us on Facebook."></a>
 			<a href="https://www.linkedin.com/company/tumcu/" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-linkedin.png" class="alignright" alt="Visit us on Facebook."></a>
 			<a href="https://twitter.com/TUMCreditUnion" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-twitter.png" class="alignright" alt="Visit us on Facebook."></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'footer-notices', 'menu_class' => 'nav-menu' ) ); ?>
