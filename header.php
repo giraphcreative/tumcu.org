@@ -48,7 +48,7 @@
 			<?php get_search_form(); ?>
 		</div>
 		
-		<a href="https://www.secure-vumcu.org/Centryx/servlet/com.sos.webteller.accountaccess.LoginFrame?SOSSessionID=!_%2F4%2F6nIiPynS6%2Fq8oiklZxxIMcVXya9dU2cWXSCeGsYRvgEFzji9I9i3fw1WZZtrqKHEmO7pdekY5ESONL7Qd5rPY_" class="banking bypass">Online Banking</a>
+		<a href="https://www.secure-vumcu.org/Centryx/servlet/com.sos.webteller.accountaccess.Login" class="banking bypass">Online Banking</a>
 
 		<div class="quick-links">
 			<?php
