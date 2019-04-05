@@ -5,6 +5,39 @@
 require_once( 'cmb2/init.php' );
 
 
+// fix URL fields as they're being submitted.
+function make_showcase_urls_relative( $field, $field_id ) {
+    // print_r( $field->data_to_save[CMB_PREFIX . 'showcase'] );
+    foreach ( $field->data_to_save[CMB_PREFIX . 'showcase'] as $key => $vals ) {
+        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['link']=str_replace( get_site_url(), '', $vals['link'] );
+        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['image']=str_replace( get_site_url(), '', $vals['image'] );
+        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['video_mp4']=str_replace( get_site_url(), '', $vals['video_mp4'] );
+        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['video_webm']=str_replace( get_site_url(), '', $vals['video_webm'] );
+    }
+    return $field;
+}
+add_action( "cmb2_post_process_fields_showcase_metabox", 'make_showcase_urls_relative', 10, 2 );
+
+
+// fix URL fields as they're being submitted.
+function make_icon_showcase_urls_relative( $field, $field_id ) {
+    foreach ( $field->data_to_save[CMB_PREFIX . 'icon_showcase'] as $key => $vals ) {
+        $field->data_to_save[CMB_PREFIX . 'icon_showcase'][$key]['link']=str_replace( get_site_url(), '', $vals['link'] );
+        $field->data_to_save[CMB_PREFIX . 'icon_showcase'][$key]['image']=str_replace( get_site_url(), '', $vals['image'] );
+    }
+    return $field;
+}
+add_action( "cmb2_post_process_fields_icon_showcase_metabox", 'make_icon_showcase_urls_relative', 10, 2 );
+
+
+// fix URL fields as they're being submitted.
+function make_footer_urls_relative( $field, $field_id ) {
+    $field->data_to_save[ CMB_PREFIX . 'footer-image' ] = str_replace( get_site_url(), '', $field->data_to_save[ CMB_PREFIX . 'footer-image' ] );
+    $field->data_to_save[ CMB_PREFIX . 'footer-image-link' ] = str_replace( get_site_url(), '', $field->data_to_save[ CMB_PREFIX . 'footer-image-link' ] );
+    return $field;
+}
+add_action( "cmb2_post_process_fields_footer_image_metabox", 'make_footer_urls_relative', 10, 2 );
+
 
 // add metabox(es)
 function page_metaboxes( $meta_boxes ) {
@@ -35,6 +68,7 @@ function page_metaboxes( $meta_boxes ) {
         'id'   => 'title',
         'type' => 'text'
     ) );
+
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Subtitle',
         'description' => 'Enter the slide content.',
