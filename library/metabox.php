@@ -5,38 +5,12 @@
 require_once( 'cmb2/init.php' );
 
 
-// fix URL fields as they're being submitted.
-function make_showcase_urls_relative( $field, $field_id ) {
-    // print_r( $field->data_to_save[CMB_PREFIX . 'showcase'] );
-    foreach ( $field->data_to_save[CMB_PREFIX . 'showcase'] as $key => $vals ) {
-        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['link']=str_replace( get_site_url(), '', $vals['link'] );
-        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['image']=str_replace( get_site_url(), '', $vals['image'] );
-        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['video_mp4']=str_replace( get_site_url(), '', $vals['video_mp4'] );
-        $field->data_to_save[CMB_PREFIX . 'showcase'][$key]['video_webm']=str_replace( get_site_url(), '', $vals['video_webm'] );
+function cmb2_relative_urls( $value, $field_args, $field ) {
+    if ( stristr( $value, 'http' ) ) {
+        $value = str_replace( get_site_url(), '', $value );
     }
-    return $field;
+    return $value;
 }
-add_action( "cmb2_post_process_fields_showcase_metabox", 'make_showcase_urls_relative', 10, 2 );
-
-
-// fix URL fields as they're being submitted.
-function make_icon_showcase_urls_relative( $field, $field_id ) {
-    foreach ( $field->data_to_save[CMB_PREFIX . 'icon_showcase'] as $key => $vals ) {
-        $field->data_to_save[CMB_PREFIX . 'icon_showcase'][$key]['link']=str_replace( get_site_url(), '', $vals['link'] );
-        $field->data_to_save[CMB_PREFIX . 'icon_showcase'][$key]['image']=str_replace( get_site_url(), '', $vals['image'] );
-    }
-    return $field;
-}
-add_action( "cmb2_post_process_fields_icon_showcase_metabox", 'make_icon_showcase_urls_relative', 10, 2 );
-
-
-// fix URL fields as they're being submitted.
-function make_footer_urls_relative( $field, $field_id ) {
-    $field->data_to_save[ CMB_PREFIX . 'footer-image' ] = str_replace( get_site_url(), '', $field->data_to_save[ CMB_PREFIX . 'footer-image' ] );
-    $field->data_to_save[ CMB_PREFIX . 'footer-image-link' ] = str_replace( get_site_url(), '', $field->data_to_save[ CMB_PREFIX . 'footer-image-link' ] );
-    return $field;
-}
-add_action( "cmb2_post_process_fields_footer_image_metabox", 'make_footer_urls_relative', 10, 2 );
 
 
 // add metabox(es)
@@ -82,26 +56,30 @@ function page_metaboxes( $meta_boxes ) {
         'name' => 'Link',
         'description' => 'Enter a slide link.',
         'id'   => 'link',
-        'type' => 'text'
+        'type' => 'text',
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Image/Video',
         'description' => 'Select an image or paste in a video URL.',
         'id'   => 'image',
         'type' => 'file',
-        'preview_size' => array( 350, 150 )
+        'preview_size' => array( 350, 150 ),
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Video URL (mp4)',
         'description' => 'Select a video in mp4 format for the background of the slide.',
         'id'   => 'video_mp4',
-        'type' => 'file'
+        'type' => 'file',
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Video URL (webm)',
         'description' => 'Select a video in webm format for the background of the slide.',
         'id'   => 'video_webm',
-        'type' => 'file'
+        'type' => 'file',
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
 
 
@@ -131,7 +109,8 @@ function page_metaboxes( $meta_boxes ) {
         'desc' => 'Upload a 90x90 pixel icon image, ideally a transparent PNG with the icon in white.',
         'id'   => 'image',
         'type' => 'file',
-        'preview_size' => array( 90, 90 )
+        'preview_size' => array( 90, 90 ),
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
 
     $icon_showcase_metabox->add_group_field( $icon_showcase_metabox_group, array(
@@ -155,6 +134,7 @@ function page_metaboxes( $meta_boxes ) {
         'desc' => 'Specify a URL to which this ad should link.',
         'id'   => 'link',
         'type' => 'text',
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
 
     $icon_showcase_metabox->add_group_field( $icon_showcase_metabox_group, array(
@@ -225,7 +205,8 @@ function page_metaboxes( $meta_boxes ) {
         'desc' => 'Upload a full width image/photo for the footer.',
         'id'   => CMB_PREFIX . 'footer-image',
         'type' => 'file',
-        'preview_size' => array( 100, 100 )
+        'preview_size' => array( 100, 100 ),
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
 
     $footer_image_showcase_metabox->add_field( array(
@@ -240,6 +221,7 @@ function page_metaboxes( $meta_boxes ) {
         'desc' => 'Specify a URL to which this ad should link.',
         'id'   => CMB_PREFIX . 'footer-image-link',
         'type' => 'text',
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
 
 
@@ -282,6 +264,7 @@ function page_metaboxes( $meta_boxes ) {
         'desc' => 'Where should the emergency bar link to.',
         'id'   => CMB_PREFIX . 'emergency-link',
         'type' => 'text',
+        'sanitization_cb' => 'cmb2_relative_urls'
     ) );
 
     $emergency_metabox->add_field( array(
