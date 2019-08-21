@@ -1,3 +1,3 @@
-## NWCUF's WordPress Theme
+## VA United Methodist Credit Union's WordPress Theme
 
-&copy; 2016 NWCUF. All rights reserved.
+&copy; 2016 TUMCU. All rights reserved.

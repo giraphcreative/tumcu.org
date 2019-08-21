@@ -85,7 +85,7 @@ footer {
 		@include respond-to( $bp-xl ) {
 			width: 13%;
 			border-right: 1px solid white;
-			min-height: 260px;
+			min-height: 280px;
 
 			&.first {
 				width: 34%;
@@ -187,6 +187,10 @@ footer {
 		@include respond-to( 768px ) {
 			float: left;
 			margin: 0 10px 10px 0;
+
+			&.ncua {
+				margin: 10px 10px 20px 0;
+			}
 		}
 	}
 

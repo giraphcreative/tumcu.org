@@ -17,6 +17,23 @@ function cmb2_relative_urls( $value, $field_args, $field ) {
 function page_metaboxes( $meta_boxes ) {
 
 
+
+    // thumb showcase metabox
+    $right_metabox = new_cmb2_box( array(
+        'id' => 'right_metabox',
+        'title' => 'Right Column Content',
+        'object_types' => array( 'page' ),
+        'context' => 'normal',
+        'priority' => 'high',
+    ) );
+
+    $right_metabox->add_field( array(
+        'name' => 'Right Column Content',
+        'id'   => CMB_PREFIX . 'right-content',
+        'type' => 'wysiwyg',
+    ) );
+
+
     // showcase metabox
     $showcase_metabox = new_cmb2_box( array(
         'id' => 'showcase_metabox',

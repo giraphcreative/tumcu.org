@@ -16,7 +16,13 @@ get_header();
 			<h1 class="post-title"><?php the_title(); ?></h1>
 					<?php
 				}
+				if ( has_cmb_value( 'right-content' ) ) {
+					?><div class="half first"><?php
+				}
 				the_content();
+				if ( has_cmb_value( 'right-content' ) ) {
+					?></div><div class="half"><?php print apply_filters( 'the_content', get_cmb_value( 'right-content' ) ); ?></div><?php
+				}
 			endwhile;
 		endif;
 		

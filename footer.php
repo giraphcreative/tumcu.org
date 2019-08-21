@@ -16,7 +16,8 @@
 		<div class="column first">
 			<h5>The United Methodist Credit Union</h5>
 			<p>Toll Free: 866-657-0004<br>
-				Phone: 804-672-0200</p>
+				Phone: 804-672-0200<br>
+				Routing Number: 251082673</p>
 		</div>
 		<div class="column">
 			<h5>About</h5>
@@ -42,15 +43,15 @@
 
 	<div class="colophon">
 		<div class="column">
-			<a href="/ncua-insurance-information/" target="_blank"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-ncua.png" alt="Insured by the NCUA"></a>Your savings are federally insured to at least $250,000, ad backed by the full faith and credit of the united states government.
+			<a href="/ncua-insurance-information/" target="_blank"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-ncua.png" alt="Insured by the NCUA" class="ncua"></a>Your savings are federally insured to at least $250,000 and backed by the full faith and credit of the United States government.
 		</div>
 		<div class="column">
 			<img src="<?php bloginfo( 'template_url' ); ?>/img/logo-equal-housing.png" alt="Equal Housing Lender Logo">Equal Housing Lender - We do business in accordance with the Federal Fair Housing Law and the Equal Housing Opportunity Act.
 		</div>
 		<div class="column links">
-			<a href="https://www.facebook.com/TUMCreditUnion/" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-facebook.png" class="alignright" alt="Visit us on Facebook."></a>
-			<a href="https://www.linkedin.com/company/tumcu/" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-linkedin.png" class="alignright" alt="Visit us on Facebook."></a>
-			<a href="https://twitter.com/TUMCreditUnion" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-twitter.png" class="alignright" alt="Visit us on Facebook."></a>
+			<a href="https://www.facebook.com/TUMCreditUnion/" target="_blank" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-facebook.png" class="alignright" alt="Visit us on Facebook."></a>
+			<a href="https://www.linkedin.com/company/tumcu/" target="_blank" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-linkedin.png" class="alignright" alt="Visit us on Facebook."></a>
+			<a href="https://twitter.com/TUMCreditUnion" target="_blank" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-twitter.png" class="alignright" alt="Visit us on Facebook."></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'footer-notices', 'menu_class' => 'nav-menu' ) ); ?>
 		</div>
 	</div>

@@ -5,10 +5,6 @@
 }
 
 @include respond-to( 768px ) {
-	.quarter, .third, .half, .two-third, .three-quarter, .twenty, .forty, .thirty {
-		float: left;
-	}
-
 	.quarter {
 		width: 23%;
 		margin: 0 1%;
@@ -47,6 +43,15 @@
 	.thirty {
 		width: 28%;
 		margin: 0 1%;
+	}
+
+	.quarter, .third, .half, .two-third, .three-quarter, .twenty, .forty, .thirty {
+		float: left;
+
+		&.first {
+			margin-left: 0;
+			padding-left: 0;
+		}
 	}
 }
 
