@@ -54,7 +54,9 @@
 			<a href="https://twitter.com/TUMCreditUnion" target="_blank" class="alignright"><img src="<?php bloginfo( 'template_url' ); ?>/img/social-twitter.png" class="alignright" alt="Visit us on Facebook."></a>
 			<?php wp_nav_menu( array( 'theme_location' => 'footer-notices', 'menu_class' => 'nav-menu' ) ); ?>
 		</div>
+		<div class="disclaimer">Links to other websites have been provided solely as a member convenience. The credit union is unable to control the content of these sites and assumes no liability for the content, accuracy, or availability. Be advised that our privacy policies do not apply to linked websites, and the viewer should consult the privacy disclosure on that site for further information.</div>
 	</div>
+
 
 </div><!-- #container -->
 

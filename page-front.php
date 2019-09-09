@@ -39,7 +39,7 @@ get_header();
 	?>
 	
 	<div class="recent-posts content-wide group">
-		<h2>Recent Blog Posts</h2>
+		<h2>News &amp; Information</h2>
 	<?php if ( $the_query->have_posts() ) : ?>
 		<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 		<div class="third">

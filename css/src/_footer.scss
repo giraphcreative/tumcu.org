@@ -194,10 +194,11 @@ footer {
 		}
 	}
 
-	.ada-disclaimer {
+	.disclaimer {
 		@include clearfix;
 		display: block;
-		font-size: .85em;
+		font-size: .8em;
+		line-height: 1.3em;
 		text-align: center;
 		border-top: 1px solid #eee;
 		color: $grey-dark;
