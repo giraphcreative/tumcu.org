@@ -3,9 +3,9 @@
  * CMB2_Utils tests
  *
  * @package   Tests_CMB2
- * @author    WebDevStudios
+ * @author    CMB2 team
  * @license   GPL-2.0+
- * @link      http://webdevstudios.com
+ * @link      https://cmb2.io
  */
 
 require_once( 'cmb-tests-base.php' );
@@ -76,7 +76,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 		$this->post_id = $this->factory->post->create();
 		$this->img_name = 'test-image.jpg';
 
-		$filename = ( CMB2_TESTDATA.'/images/test-image.jpg' );
+		$filename = ( CMB2_TESTDATA . '/images/test-image.jpg' );
 		$contents = file_get_contents( $filename );
 		$upload   = wp_upload_bits( basename( $filename ), null, $contents );
 
@@ -100,12 +100,13 @@ class Test_CMB2_Utils extends Test_CMB2 {
 	function _make_attachment( $upload, $parent_post_id = -1 ) {
 
 		$type = '';
-		if ( !empty($upload['type']) ) {
+		if ( ! empty( $upload['type'] ) ) {
 			$type = $upload['type'];
 		} else {
 			$mime = wp_check_filetype( $upload['file'] );
-			if ($mime)
+			if ( $mime ) {
 				$type = $mime['type'];
+			}
 		}
 
 		$attachment = array(
@@ -114,11 +115,11 @@ class Test_CMB2_Utils extends Test_CMB2 {
 			'post_type' => 'attachment',
 			'post_parent' => $parent_post_id,
 			'post_mime_type' => $type,
-			'guid' => $upload[ 'url' ],
+			'guid' => $upload['url'],
 		);
 
 		// Save the data
-		$id = wp_insert_attachment( $attachment, $upload[ 'file' ], $parent_post_id );
+		$id = wp_insert_attachment( $attachment, $upload['file'], $parent_post_id );
 		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $upload['file'] ) );
 
 		return $id;
@@ -147,6 +148,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 			);
 
 			add_filter( 'theme_root', array( 'Test_CMB2_Utils_WIN', '_change_to_wamp_theme_root' ) );
+
 			$this->assertEquals(
 				site_url( $located ),
 				Test_CMB2_Utils_WIN::get_url_from_dir( ABSPATH . $located )
@@ -193,6 +195,15 @@ class Test_CMB2_Utils extends Test_CMB2 {
 			'att7'  => 'att7 value',
 			'att10' => 'att10 value',
 		);
+		$data2 = array(
+			'val1' => 1,
+			'val2' => 'two',
+			'val3' => array(
+				'val1' => 1,
+				'val2' => 'two',
+				'val3' => 'two',
+			),
+		);
 
 		$attributes = array(
 			'rendered'  => 'rendered',
@@ -203,6 +214,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 			'att7'      => 'att7 value',
 			'att10'     => 'att10 value',
 			'data-blah' => function_exists( 'wp_json_encode' ) ? wp_json_encode( $data ) : json_encode( $data ),
+			'data-pizza' => function_exists( 'wp_json_encode' ) ? wp_json_encode( $data2 ) : json_encode( $data2 ),
 		);
 
 		$to_exclude = array(
@@ -211,7 +223,7 @@ class Test_CMB2_Utils extends Test_CMB2 {
 		);
 
 		$this->assertHTMLstringsAreEqual(
-			'value="" att3="att3 value" att10="att10 value" data-blah=\'{"att3":"att3 value","att5":"att5 value","att7":"att7 value","att10":"att10 value"}\'',
+			'value="" att3="att3 value" att10="att10 value" data-blah=\'{"att3":"att3 value","att5":"att5 value","att7":"att7 value","att10":"att10 value"}\' data-pizza=\'{"val1":1,"val2":"two","val3":{"val1":1,"val2":"two","val3":"two"}}\'',
 			CMB2_Utils::concat_attrs( $attributes, $to_exclude )
 		);
 	}
@@ -230,12 +242,93 @@ class Test_CMB2_Utils extends Test_CMB2 {
 		), CMB2_Utils::ensure_array( new WP_Error ) );
 	}
 
+	public function test_url_set() {
+		$cmb2_url = str_replace(
+			array( WP_CONTENT_DIR, WP_PLUGIN_DIR ),
+			array( WP_CONTENT_URL, WP_PLUGIN_URL ),
+			cmb2_dir()
+		);
+
+		$this->assertEquals( CMB2_Utils::url(), $cmb2_url );
+	}
+
+	public function test_array_insert() {
+		$array = array(
+			'one' => array( 1,2,3 ),
+			'two' => array( 1,2,3 ),
+			'three' => array( 1,2,3 ),
+		);
+
+		$new = array(
+			'new' => array( 4, 5, 6 ),
+		);
+
+		CMB2_Utils::array_insert( $array, $new, 2 );
+
+		$this->assertEquals( array(
+			'one' => array( 1,2,3 ),
+			'new' => array( 4,5,6 ),
+			'two' => array( 1,2,3 ),
+			'three' => array( 1,2,3 ),
+		), $array );
+	}
+
+	public function test_normalize_if_numeric() {
+		$tests = array(
+			array( '0.1', 0.10000000000000001 ),
+			array( 0.1, 0.1 ),
+			array( .1, .1 ),
+			array( 1, 1 ),
+			array( '1', 1 ),
+			array( 'one', 'one' ),
+			array( '0.0', 0.0 ),
+			array( 0, 0 ),
+			array( '', '' ),
+		);
+		foreach ( $tests as $index => $test ) {
+			$this->assertSame(
+				$test[1],
+				CMB2_Utils::normalize_if_numeric( $test[0] ),
+				"Test index: $index"
+			);
+		}
+
+	}
+
+	public function test_php_to_js_dateformat() {
+		$tests = array(
+			array( 'l F j, Y', 'DD MM d, yy' ),
+			array( 'Y-m-d', 'yy-mm-dd' ),
+			array( 'm-d-Y', 'mm-dd-yy' ),
+			array( 'F', 'MM' ),
+			array( 'l', 'DD' ),
+			array( 'F', 'MM' ),
+			array( 'l jS \of F Y h:i:s A', 'DD dS &#39;o&#39;f MM yy hh:mm:ss TT' ),
+			array( 'm.d.y', 'mm.dd.y' ),
+			array( 'j, n, Y', 'd, m, yy' ),
+			array( 'Ymd', 'yymmdd' ),
+			// @todo Fix these:
+			array( 'j-m-y, \it \is w Day', 'd-mm-y, &#39;i&#39;t &#39;i&#39;ss w Dtty' ),
+			array( '\i\t \i\s \t\h\e jS \d\a\y.', '&#39;it&#39; &#39;is&#39; &#39;the&#39; dS &#39;day&#39;.' ),
+		);
+		foreach ( $tests as $index => $test ) {
+			$this->assertSame(
+				$test[1],
+				CMB2_Utils::php_to_js_dateformat( $test[0] ),
+				"Test index: $index"
+			);
+		}
+
+	}
+
 }
 
 class Test_CMB2_Utils_WIN extends CMB2_Utils {
-	public static $ABSPATH = 'C:\xampp\htdocs\the-site-dir';
+	protected static function get_normalized_abspath() {
+		return self::normalize_path( 'C:\xampp\htdocs\the-site-dir' );
+	}
 
 	public static function _change_to_wamp_theme_root() {
-		return self::$ABSPATH . '/wp-content/themes/';
+		return self::get_normalized_abspath() . '/wp-content/themes/';
 	}
 }

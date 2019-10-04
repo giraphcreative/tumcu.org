@@ -3,9 +3,9 @@
  * CMB2_Field tests
  *
  * @package   Tests_CMB2
- * @author    WebDevStudios
+ * @author    CMB2 team
  * @license   GPL-2.0+
- * @link      http://webdevstudios.com
+ * @link      https://cmb2.io
  */
 
 require_once( 'cmb-tests-base.php' );
@@ -58,7 +58,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 	}
 
 	public function test_cmb2_field_instance() {
-		$this->assertInstanceOf( 'CMB2_Field', $this->field  );
+		$this->assertInstanceOf( 'CMB2_Field', $this->field );
 	}
 
 	public function test_cmb2_before_and_after_field_callbacks() {
@@ -88,13 +88,13 @@ class Test_CMB2_Field extends Test_CMB2 {
 	public function test_cmb2_row_classes_field_callback_with_array() {
 		// Add row classes dynamically with a callback that returns an array
 		$classes = $this->field->row_classes();
-		$this->assertHTMLstringsAreEqual( 'cmb-type-text cmb2-id-test-test table-layout type name desc before after options options_cb text text_cb attributes protocols default default_cb classes classes_cb select_all_button multiple repeatable inline on_front show_names save_field date_format time_format description preview_size render_row_cb display_cb label_cb column js_dependencies show_in_rest id before_field after_field _id _name has_supporting_data', $classes );
+		$this->assertHTMLstringsAreEqual( 'cmb-type-text cmb2-id-test-test table-layout type name desc before after options options_cb text text_cb attributes protocols default default_cb classes classes_cb select_all_button multiple repeatable inline on_front show_names save_field date_format time_format description preview_size render_row_cb display_cb label_cb column js_dependencies show_in_rest char_counter char_max char_max_enforce id before_field after_field _id _name has_supporting_data', $classes );
 	}
 
 	public function test_cmb2_default_field_callback_with_array() {
 		// Add row classes dynamically with a callback that returns an array
 		$default = $this->field->args( 'default' );
-		$this->assertHTMLstringsAreEqual( 'type, name, desc, before, after, options, options_cb, text, text_cb, attributes, protocols, default, default_cb, classes, classes_cb, select_all_button, multiple, repeatable, inline, on_front, show_names, save_field, date_format, time_format, description, preview_size, render_row_cb, display_cb, label_cb, column, js_dependencies, show_in_rest, id, before_field, after_field, _id, _name, has_supporting_data', $default );
+		$this->assertHTMLstringsAreEqual( 'type, name, desc, before, after, options, options_cb, text, text_cb, attributes, protocols, default, default_cb, classes, classes_cb, select_all_button, multiple, repeatable, inline, on_front, show_names, save_field, date_format, time_format, description, preview_size, render_row_cb, display_cb, label_cb, column, js_dependencies, show_in_rest, char_counter, char_max, char_max_enforce, id, before_field, after_field, _id, _name, has_supporting_data', $default );
 	}
 
 	/**
@@ -156,7 +156,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 
 		add_filter( 'cmb2_sanitize_text', array( __CLASS__, '_return_different_value' ) );
 		$modified = $field->save_field( 'some value to be modified' );
-		$this->assertTrue( !! $modified );
+		$this->assertTrue( ! ! $modified );
 		remove_filter( 'cmb2_sanitize_text', array( __CLASS__, '_return_different_value' ) );
 
 		// $val = $field->get_data();
@@ -205,7 +205,9 @@ class Test_CMB2_Field extends Test_CMB2 {
 
 		// Retrieve saved value(s)
 		$this->assertEquals( $cleaned_val, cmb2_options( 0 )->get( $field->id() ) );
-		$this->assertEquals( array( 'test_test' => $cleaned_val ), cmb2_options( 0 )->get_options() );
+		$this->assertEquals( array(
+			'test_test' => $cleaned_val,
+		), cmb2_options( 0 )->get_options() );
 	}
 
 	public function test_show_option_none() {
@@ -225,7 +227,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 		$this->assertFalse( $field->args( 'show_option_none' ) );
 
 		$this->assertHTMLstringsAreEqual(
-			'<div class="cmb-row cmb-type-radio-inline cmb2-id-radio-inline cmb-inline" data-fieldtype="radio_inline"><div class="cmb-th"><label for="radio_inline">Test Radio inline</label></div><div class="cmb-td"><ul class="cmb2-radio-list cmb2-list"><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline1" value="standard"/><label for="radio_inline1">Option One</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline2" value="custom"/><label for="radio_inline2">Option Two</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline3" value="none"/><label for="radio_inline3">Option Three</label></li></ul><p class="cmb2-metabox-description">field description (optional)</p></div></div>',
+			'<div class="cmb-row cmb-type-radio-inline cmb2-id-radio-inline cmb-inline" data-fieldtype="radio_inline"><div class="cmb-th"><label for="radio_inline">Test Radio inline</label></div><div class="cmb-td"><ul class="cmb2-radio-list cmb2-list"><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline1" value="standard" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline1">Option One</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline2" value="custom" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline2">Option Two</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline3" value="none" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline3">Option Three</label></li></ul><p class="cmb2-metabox-description">field description (optional)</p></div></div>',
 			$this->render_field( $field )
 		);
 
@@ -235,7 +237,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 		$this->assertEquals( esc_html__( 'None', 'cmb2' ), $field->args( 'show_option_none' ) );
 
 		$this->assertHTMLstringsAreEqual(
-			'<div class="cmb-row cmb-type-radio-inline cmb2-id-radio-inline cmb-inline" data-fieldtype="radio_inline"><div class="cmb-th"><label for="radio_inline">Test Radio inline</label></div><div class="cmb-td"><ul class="cmb2-radio-list cmb2-list"><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline1" value="" checked="checked"/><label for="radio_inline1">None</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline2" value="standard"/><label for="radio_inline2">Option One</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline3" value="custom"/><label for="radio_inline3">Option Two</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline4" value="none"/><label for="radio_inline4">Option Three</label></li></ul><p class="cmb2-metabox-description">field description (optional)</p></div></div>',
+			'<div class="cmb-row cmb-type-radio-inline cmb2-id-radio-inline cmb-inline" data-fieldtype="radio_inline"><div class="cmb-th"><label for="radio_inline">Test Radio inline</label></div><div class="cmb-td"><ul class="cmb2-radio-list cmb2-list"><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline1" value="" checked="checked" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline1">None</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline2" value="standard" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline2">Option One</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline3" value="custom" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline3">Option Two</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline4" value="none" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline4">Option Three</label></li></ul><p class="cmb2-metabox-description">field description (optional)</p></div></div>',
 			$this->render_field( $field )
 		);
 
@@ -245,7 +247,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 		$this->assertEquals( 'No Value', $field->args( 'show_option_none' ) );
 
 		$this->assertHTMLstringsAreEqual(
-			'<div class="cmb-row cmb-type-radio-inline cmb2-id-radio-inline cmb-inline" data-fieldtype="radio_inline"><div class="cmb-th"><label for="radio_inline">Test Radio inline</label></div><div class="cmb-td"><ul class="cmb2-radio-list cmb2-list"><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline1" value="" checked="checked"/><label for="radio_inline1">No Value</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline2" value="standard"/><label for="radio_inline2">Option One</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline3" value="custom"/><label for="radio_inline3">Option Two</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline4" value="none"/><label for="radio_inline4">Option Three</label></li></ul><p class="cmb2-metabox-description">field description (optional)</p></div></div>',
+			'<div class="cmb-row cmb-type-radio-inline cmb2-id-radio-inline cmb-inline" data-fieldtype="radio_inline"><div class="cmb-th"><label for="radio_inline">Test Radio inline</label></div><div class="cmb-td"><ul class="cmb2-radio-list cmb2-list"><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline1" value="" checked="checked" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline1">No Value</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline2" value="standard" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline2">Option One</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline3" value="custom" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline3">Option Two</label></li><li><input type="radio" class="cmb2-option" name="radio_inline" id="radio_inline4" value="none" data-hash=\'6p2q27ncjf10\'/><label for="radio_inline4">Option Three</label></li></ul><p class="cmb2-metabox-description">field description (optional)</p></div></div>',
 			$this->render_field( $field )
 		);
 
@@ -259,7 +261,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 		$cmb_demo = cmb2_get_metabox( array(
 			'id'            => $prefix . 'metabox',
 			'title'         => esc_html__( 'Test Metabox', 'cmb2' ),
-			'object_types'  => array( 'page', ), // Post type
+			'object_types'  => array( 'page' ), // Post type
 			'show_on_cb'    => 'yourprefix_show_if_front_page', // function should return a bool value
 			'context'       => 'normal',
 			'priority'      => 'high',
@@ -309,7 +311,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 		delete_post_meta( $this->field->object_id, $this->field->_id() );
 
 		// Verify that the post-meta no longer exists
-		$this->assertFalse( !! get_post_meta( $this->field->object_id, $this->field->_id(), 1 ) );
+		$this->assertFalse( ! ! get_post_meta( $this->field->object_id, $this->field->_id(), 1 ) );
 
 		// Now filter the setting of the meta.. will use update_option instead
 		add_filter( "cmb2_override_{$this->field->_id()}_meta_save", array( __CLASS__, 'override_set' ), 10, 4 );
@@ -317,10 +319,10 @@ class Test_CMB2_Field extends Test_CMB2 {
 		$this->field->save_field( $array_val );
 
 		// Verify that the post-meta is still empty
-		$this->assertFalse( !! get_post_meta( $this->field->object_id, $this->field->_id(), 1 ) );
+		$this->assertFalse( ! ! get_post_meta( $this->field->object_id, $this->field->_id(), 1 ) );
 
 		// Re-create the option key that we used to save the data
-		$opt_key = 'test-'. $this->field->object_id . '-' . $this->field->_id();
+		$opt_key = 'test-' . $this->field->object_id . '-' . $this->field->_id();
 		// And retrieve the option
 		$opt = get_option( $opt_key );
 
@@ -331,7 +333,7 @@ class Test_CMB2_Field extends Test_CMB2 {
 		$value = $this->field->get_data();
 
 		// Verify that there's still nothing there in post-meta
-		$this->assertFalse( !! $value );
+		$this->assertFalse( ! ! $value );
 
 		// Now filter the getting of the meta, which will use get_option
 		add_filter( "cmb2_override_{$this->field->_id()}_meta_value", array( __CLASS__, 'override_get' ), 10, 4 );
@@ -343,6 +345,11 @@ class Test_CMB2_Field extends Test_CMB2 {
 	}
 
 	public function test_get_cmb() {
+		if ( version_compare( phpversion(), '5.3', '<' ) ) {
+			$this->assertTrue( true );
+			return;
+		}
+
 		$cmb = new_cmb2_box( array(
 			'id'            => 'metabox',
 			'object_types'  => array( 'post' ),
@@ -354,7 +361,9 @@ class Test_CMB2_Field extends Test_CMB2 {
 	}
 
 	public function test_get_field_clone() {
-		$field = $this->field->get_field_clone( array( 'id' => 'test_field_clone' ) );
+		$field = $this->field->get_field_clone( array(
+			'id' => 'test_field_clone',
+		) );
 
 		foreach ( $this->field_args as $key => $arg ) {
 			if ( 'id' === $key || 'default' === $key || 'default_cb' === $key ) {
@@ -399,32 +408,32 @@ class Test_CMB2_Field extends Test_CMB2 {
 					<div class="cmb-tbody cmb-field-list">
 						<div class="cmb-row cmb-repeat-row">
 							<div class="cmb-td">
-								<select class="cmb2_select" name="prouct-case-study[0]" id="prouct-case-study_0" data-iterator="0">	<option value=""  selected=\'selected\'>None</option>
+								<select class="cmb2_select" name="prouct-case-study[0]" id="prouct-case-study_0" data-iterator="0" data-hash=\'6ll8fi7o2du0\'>	<option value=""  selected=\'selected\'>None</option>
 									<option value="1" >Rad Case Study</option>
 									<option value="2" >Wicked Case Study</option>
 									<option value="3" >Cool Case Study</option>
 								</select>
 							</div>
 							<div class="cmb-td cmb-remove-row">
-								<button type="button" class="button cmb-remove-row-button button-disabled">Remove</button>
+								<button type="button" class="button-secondary cmb-remove-row-button" title="Remove Row">Remove</button>
 							</div>
 						</div>
 						<div class="cmb-row empty-row hidden">
 							<div class="cmb-td">
-								<select class="cmb2_select" name="prouct-case-study[1]" id="prouct-case-study_1" data-iterator="1">	<option value=""  selected=\'selected\'>None</option>
+								<select class="cmb2_select" name="prouct-case-study[1]" id="prouct-case-study_1" data-iterator="1" data-hash=\'6ll8fi7o2du0\'>	<option value="" >None</option>
 									<option value="1" >Rad Case Study</option>
 									<option value="2" >Wicked Case Study</option>
 									<option value="3" >Cool Case Study</option>
 								</select>
 							</div>
 							<div class="cmb-td cmb-remove-row">
-								<button type="button" class="button cmb-remove-row-button">Remove</button>
+								<button type="button" class="button-secondary cmb-remove-row-button" title="Remove Row">Remove</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<p class="cmb-add-row">
-					<button type="button" data-selector="prouct-case-study_repeat" class="cmb-add-row-button button">Add Case Study</button>
+					<button type="button" data-selector="prouct-case-study_repeat" class="cmb-add-row-button button-secondary">Add Case Study</button>
 				</p>
 			</div>
 		</div>';
@@ -485,13 +494,13 @@ class Test_CMB2_Field extends Test_CMB2 {
 	}
 
 	public static function override_set( $override, $args, $field_args, $field ) {
-		$opt_key = 'test-'. $args['id'] . '-' . $args['field_id'];
+		$opt_key = 'test-' . $args['id'] . '-' . $args['field_id'];
 		$updated = update_option( $opt_key, $args['value'] );
 		return true;
 	}
 
 	public static function override_get( $override_val, $object_id, $args, $field ) {
-		$opt_key = 'test-'. $args['id'] . '-' . $args['field_id'];
+		$opt_key = 'test-' . $args['id'] . '-' . $args['field_id'];
 		return get_option( $opt_key );
 	}
 
@@ -514,4 +523,61 @@ class Test_CMB2_Field extends Test_CMB2 {
 
 		$this->assertNotFalse( $modified );
 	}
+
+	public function test_cmb2_field_save_slashed() {
+		$args = $this->field_args;
+		$args['save_field'] = true;
+
+		$field = $this->new_field( $args );
+
+		$tests = array(
+			'[{\"content\":\"This is a \\\"some\\\" content\"}]',
+			'¯\\\_(ツ)_/¯',
+		);
+
+		foreach ( $tests as $test_val ) {
+			$unslashed_val = wp_unslash( $test_val );
+
+			$field->save_field( $test_val );
+
+			$this->assertSame( CMB2_Utils::wp_at_least( '3.8.1' ) ? $unslashed_val : $test_val, $field->get_data() );
+
+			$field->save_field( $unslashed_val );
+			$this->assertSame( $unslashed_val, $field->get_data() );
+		}
+	}
+
+	public function test_cmb2_money_field_save_slashed() {
+		$args = $this->field_args;
+		$args['save_field'] = true;
+		$args['type'] = 'text_money';
+
+		$field = $this->new_field( $args );
+
+		$this->cmb2_money_field_save_slashed( $field, '¯\\\_(ツ)_/¯', '0.00' );
+		$this->cmb2_money_field_save_slashed( $field, '5,000.23', '5,000.23' );
+		$this->cmb2_money_field_save_slashed( $field, '444446000.23', '444,446,000.23' );
+
+		global $wp_locale;
+
+		$thousands_sep = $wp_locale->number_format['thousands_sep'];
+		// Replace with the Swiss German thousand separator, which is a `'`.
+		$wp_locale->number_format['thousands_sep'] = "'";
+
+		$this->cmb2_money_field_save_slashed( $field, "2\'180.00", "2'180.00" );
+		$this->cmb2_money_field_save_slashed( $field, "444\'446\'000.23", "444'446'000.23" );
+		$this->cmb2_money_field_save_slashed( $field, "444'446'000.23", "444'446'000.23" );
+		$this->cmb2_money_field_save_slashed( $field, '444446000.23', "444'446'000.23" );
+
+		$wp_locale->number_format['thousands_sep'] = $thousands_sep;
+	}
+
+	protected function cmb2_money_field_save_slashed( $field, $test_val, $expected ) {
+		$field->save_field( $test_val );
+		$this->assertSame( $expected, $field->get_data() );
+
+		$field->save_field( $expected );
+		$this->assertSame( $expected, $field->get_data() );
+	}
+
 }

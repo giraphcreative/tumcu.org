@@ -39,8 +39,8 @@ module.exports = function(grunt) {
 					},
 					processPot: function( pot, options ) {
 						pot.headers['report-msgid-bugs-to'] = 'http://wordpress.org/support/plugin/cmb2';
-						pot.headers['last-translator'] = 'WebDevStudios contact@webdevstudios.com';
-						pot.headers['language-team'] = 'WebDevStudios contact@webdevstudios.com';
+						pot.headers['last-translator'] = 'CMB2 Team hello@cmb2.io';
+						pot.headers['language-team'] = 'CMB2 Team hello@cmb2.io';
 						var today = new Date();
 						pot.headers['po-revision-date'] = today.getFullYear() +'-'+ ( today.getMonth() + 1 ) +'-'+ today.getDate() +' '+ today.getUTCHours() +':'+ today.getUTCMinutes() +'+'+ today.getTimezoneOffset();
 						return pot;
@@ -151,8 +151,38 @@ module.exports = function(grunt) {
 			}
 		},
 
+		usebanner: {
+			taskName: {
+				options: {
+					position: 'top',
+					banner: '/*!\n' +
+						' * <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+						' * <%= pkg.homepage %>\n' +
+						' * Copyright (c) <%= grunt.template.today("yyyy") %>\n' +
+						' * Licensed GPLv2+\n' +
+						' */\n',
+					linebreak: true
+				},
+				files: {
+					src: [
+						'css/cmb2.css',
+						'css/cmb2-front.css',
+						'css/cmb2-display.css',
+						'css/cmb2-rtl.css',
+						'css/cmb2-front-rtl.css',
+						'css/cmb2-display-rtl.css'
+					],
+				}
+			}
+		},
+
 		cssmin: {
 			options: {
+				banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>' +
+					' | <%= pkg.homepage %>' +
+					' | Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>' +
+					' | Licensed <%= pkg.license %>' +
+					' */'
 				// banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
 				// 	' * <%= pkg.homepage %>\n' +
 				// 	' * Copyright (c) <%= grunt.template.today("yyyy") %>;' +
@@ -177,7 +207,8 @@ module.exports = function(grunt) {
 		jshint: {
 			all: [
 				'js/cmb2.js',
-				'js/cmb2-wysiwyg.js'
+				'js/cmb2-wysiwyg.js',
+				'js/cmb2-char-counter.js'
 			],
 			options: {
 				curly   : true,
@@ -195,7 +226,7 @@ module.exports = function(grunt) {
 					exports : true,
 					module  : false
 				},
-				predef  :['document','window','jQuery','cmb2_l10','wp','tinyMCEPreInit','tinyMCE','console','postboxes','pagenow']
+				predef  :['document','window','jQuery','cmb2_l10','wp','tinyMCEPreInit','tinyMCE','console','postboxes','pagenow', 'QTags', 'quicktags', '_']
 			}
 		},
 
@@ -212,7 +243,7 @@ module.exports = function(grunt) {
 		uglify: {
 			all: {
 				files: {
-					'js/cmb2.min.js': ['js/cmb2.js', 'js/cmb2-wysiwyg.js']
+					'js/cmb2.min.js': ['js/cmb2.js', 'js/cmb2-wysiwyg.js', 'js/cmb2-char-counter.js']
 				},
 				options: {
 					// banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
@@ -228,7 +259,7 @@ module.exports = function(grunt) {
 		watch: {
 
 			css: {
-				files: ['css/sass/partials/*.scss'],
+				files: ['css/sass/**/*.scss'],
 				tasks: ['styles'],
 				options: {
 					spawn: false,
@@ -236,7 +267,7 @@ module.exports = function(grunt) {
 			},
 
 			scripts: {
-				files: ['js/cmb2.js', 'js/cmb2-wysiwyg.js'],
+				files: ['js/cmb2.js', 'js/cmb2-wysiwyg.js', 'js/cmb2-char-counter.js'],
 				tasks: ['js'],
 				options: {
 					debounceDelay: 500
@@ -309,11 +340,14 @@ module.exports = function(grunt) {
 	});
 
 	var asciify = ['asciify'];
-	var styles  = ['sass', 'csscomb', 'cmq', 'cssjanus', 'cssmin'];
+	var styles  = ['sass', 'csscomb', 'cmq', 'cssjanus', 'cssmin', 'usebanner'];
+	var hint    = ['jshint'];
 	var js      = ['jshint', 'uglify'];
 	var tests   = ['jshint', 'phpunit'];
 
 	grunt.registerTask( 'styles', asciify.concat( styles ) );
+	grunt.registerTask( 'css', asciify.concat( styles ) );
+	grunt.registerTask( 'hint', asciify.concat( hint ) );
 	grunt.registerTask( 'js', asciify.concat( js ) );
 	grunt.registerTask( 'tests', asciify.concat( tests ) );
 	grunt.registerTask( 'default', asciify.concat( styles, js, tests ) );
