@@ -49,6 +49,8 @@
 		</div>
 		
 		<a href="https://www.secure-vumcu.org/Centryx/servlet/com.sos.webteller.accountaccess.Login" class="banking bypass">Online Banking</a>
+		
+		<a href="/join" class="join bypass">Join Today</a>
 
 		<div class="quick-links">
 			<?php

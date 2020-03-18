@@ -159,10 +159,15 @@ header {
 
 		@include respond-to( $bp-m ) {
 			position: absolute;
-			top: 65px;
-			right: 40px;			
+			top: 45px;
+			right: 12px;			
 			width: 320px;
 			margin: 0;
+		}
+
+		@include respond-to( $bp-l ) {
+			top: 55px;
+			right: 20px;
 		}
 
 		input[type=text] {
@@ -206,16 +211,22 @@ header {
 	.banking {
 		display: none;
 
-		@include respond-to( 768px ) {
+		@include respond-to( $bp-m ) {
 			display: block;
 			position: absolute;
-			top: 120px;
-			right: 40px;
+			top: 95px;
+			right: 12px;
 	        width: 320px;
 	        background: $red;
-	        padding: 10px 25px;
+	        padding: 6px 25px;
 	        color: white;
 	        text-transform: uppercase;
+	        transition: all 400ms ease-in-out;
+
+	        &:hover {
+	        	text-decoration: none;
+	        	opacity: .8;
+	        }
 
 	        &:after {
 	        	position: absolute;
@@ -226,6 +237,48 @@ header {
 	        	width: 50px;
 	        	background: $grey url(../img/icon-arrow-right.png) center center no-repeat;
 	        }
+		}
+
+		@include respond-to( $bp-l ) {
+			top: 105px;
+			right: 20px;
+		}
+    }
+
+	.join {
+		display: none;
+
+		@include respond-to( $bp-m ) {
+			display: block;
+			position: absolute;
+			top: 137px;
+			right: 12px;
+	        width: 320px;
+	        background: $red;
+	        padding: 6px 25px;
+	        color: white;
+	        text-transform: uppercase;
+	        transition: all 400ms ease-in-out;
+
+	        &:hover {
+	        	text-decoration: none;
+	        	opacity: .8;
+	        }
+
+	        &:after {
+	        	position: absolute;
+	        	content: '';
+	        	right: 0;
+	        	top: 0;
+	        	bottom: 0;
+	        	width: 50px;
+	        	background: $grey url(../img/icon-arrow-right.png) center center no-repeat;
+	        }
+		}
+
+		@include respond-to( $bp-l ) {
+			top: 147px;
+			right: 20px;
 		}
     }
 
@@ -241,12 +294,17 @@ header {
     		max-width: 320px;
     	}
 
-    	@include respond-to( 768px ) {
+    	@include respond-to( $bp-m ) {
     		display: block;
     		position: absolute;
     		top: 175px;
-    		right: 40px;
+    		right: 20px;
     	}
+
+		@include respond-to( $bp-l ) {
+			top: 185px;
+			right: 30px;
+		}
     }
 
 }
