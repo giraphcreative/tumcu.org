@@ -12,13 +12,14 @@ function the_showcase( $height = 600 ) {
 		<?php
 		$count = 0;
 		foreach ( $slides as $key => $slide ) {
+			unset( $title, $subtitle, $link, $video );
 			if ( !empty( $slide["image"] ) ) {
 
 				// store the title and subtitle
 				$title = ( isset( $slide["title"] ) ? $slide["title"] : '' );
 				$subtitle = ( isset( $slide["subtitle"] ) ? $slide["subtitle"] : '' );
 				$link = ( isset( $slide["link"] ) ? $slide["link"] : '' );
-				$video = ( isset( $slide["video_mp4"] ) && isset( $slide["video_webm"] ) ? '<video playsinline autoplay muted loop controls poster="' . $slide["image"] . '" class="bgvid">
+				$video = ( !empty( $slide["video_mp4"] ) && !empty( $slide["video_webm"] ) ? '<video playsinline autoplay muted loop controls poster="' . $slide["image"] . '" class="bgvid">
     <source src="' . $slide["video_webm"] . '" type="video/webm">
     <source src="' . $slide["video_mp4"] . '" type="video/mp4">
 </video>' : '' );
