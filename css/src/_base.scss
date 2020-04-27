@@ -97,6 +97,14 @@ img {
 
 
 .content-style {
+	em, i {
+		@include font-thin-italic;
+	}
+
+	em strong, strong em, strong i, i strong, i b, b i, b em, em b {
+		@include font-bold-italic;
+	}
+
 	ol, ul {
 		padding: 5px 0 5px 35px;
 
