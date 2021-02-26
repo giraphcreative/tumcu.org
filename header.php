@@ -57,7 +57,7 @@
 			$quick_links = wp_get_nav_menu_items( 9 );
 			?>
 			<select>
-				<option>Quick Links</option>
+				<option>Services</option>
 				<?php
 				foreach ( $quick_links as $ql ) {
 					?><option value="<?php print $ql->url ?>"><?php print $ql->title ?></option><?php
