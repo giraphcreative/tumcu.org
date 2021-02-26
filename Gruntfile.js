@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['css/src/*.scss','editor-style.css'],
-                tasks: ['sass','autoprefixer'],
+                tasks: ['sass'],
                 options: {
                     spawn: false
                 }
@@ -56,22 +56,13 @@ module.exports = function(grunt) {
             }
         },
 
-
-        // auto-prefix our css3 properties.
-        autoprefixer: {
-            files: {
-                dest: 'css/main.css',
-                src: 'css/src/main-unprefixed.css'
-            }
-        }
-
     });
 
     // register task
     grunt.registerTask('default', ['watch']);
 
     // a build task just in case we want to
-    grunt.registerTask('build', ['sass','autoprefixer','uglify']);
+    grunt.registerTask('build', ['sass','uglify']);
 
 };
 

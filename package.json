@@ -2,10 +2,9 @@
     "name": "tumcu",
     "version": "0.0.1",
     "devDependencies": {
-        "grunt": "^1.0.4",
-        "grunt-autoprefixer": "*",
+        "grunt": "*",
         "grunt-contrib-sass": "*",
-        "grunt-contrib-uglify": "^4.0.1",
+        "grunt-contrib-uglify": "*",
         "grunt-contrib-watch": "*",
         "matchdep": "*"
     }
