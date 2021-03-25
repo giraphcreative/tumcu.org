@@ -48,7 +48,7 @@
 
 	<div class="colophon">
 		<div class="column">
-			<a href="/ncua-insurance-information/" target="_blank"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-ncua.png" alt="Insured by the NCUA" class="ncua"></a>Your savings are federally insured to at least $250,000 and backed by the full faith and credit of the United States government.
+			<a href="https://www.ncua.gov/support-services/share-insurance-fund" target="_blank"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-ncua.png" alt="Insured by the NCUA" class="ncua"></a>Your savings are federally insured to at least $250,000 and backed by the full faith and credit of the United States government.
 		</div>
 		<div class="column">
 			<img src="<?php bloginfo( 'template_url' ); ?>/img/logo-equal-housing.png" alt="Equal Housing Lender Logo">Equal Housing Lender - We do business in accordance with the Federal Fair Housing Law and the Equal Housing Opportunity Act.

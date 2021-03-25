@@ -26,6 +26,7 @@ include( "library/icons.php" );
 include( "library/calculator.php" );
 include( "library/boxes.php" );
 include( "library/footer.php" );
+include( "library/partner-logos.php" );
 
 
 // add editor stylesheet

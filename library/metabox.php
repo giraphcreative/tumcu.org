@@ -302,7 +302,7 @@ function page_metaboxes( $meta_boxes ) {
 
 
 }
-add_filter( 'cmb2_init', 'page_metaboxes' );
+add_filter( 'cmb2_admin_init', 'page_metaboxes' );
 
 
 

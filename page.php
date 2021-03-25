@@ -33,6 +33,8 @@ get_header();
 
 	<?php the_boxes(); ?>
 
+	<?php the_partner_logos(); ?>
+
 	<?php the_footer_image(); ?>
 
 <?php

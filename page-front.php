@@ -29,8 +29,6 @@ get_header();
 
 	<?php the_boxes(); ?>
 
-	<?php the_footer_image(); ?>
-
 	<?php 
 	// the query
 	$the_query = new WP_Query( array(
@@ -55,6 +53,10 @@ get_header();
 	<?php else : ?>
 	<p><?php __('No News'); ?></p>
 	<?php endif; ?>
+
+	<?php the_partner_logos(); ?>
+
+	<?php the_footer_image(); ?>
 
 <?php
 

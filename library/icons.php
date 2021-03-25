@@ -33,4 +33,3 @@ function the_icon_showcase() {
 }
 
 
-?>

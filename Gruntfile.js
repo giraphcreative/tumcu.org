@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
-                    'css/src/main-unprefixed.css': 'css/src/main.scss',
+                    'css/main.css': 'css/src/main.scss',
                     'editor-style.css': 'css/src/editor.scss',
                 }
             }
