@@ -54,6 +54,9 @@ get_header();
 	<p><?php __('No News'); ?></p>
 	<?php endif; ?>
 
+	<div class="partner-logo-title">
+		<h3>Our Partners</h3>
+	</div>
 	<?php the_partner_logos(); ?>
 
 	<?php the_footer_image(); ?>
