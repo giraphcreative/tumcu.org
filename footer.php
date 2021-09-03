@@ -15,14 +15,7 @@
 	<footer class="footer">
 		<div class="column first">
 			<h5>The United Methodist Credit Union</h5>
-			<p style="margin-bottom: 10px;">10330 Staples Mill Rd.<br>
-			Glen Allen, VA 23060</p>
-			<p style="margin-bottom: 10px;"><strong>Mailing Address:</strong><br>
-			PO Box 9798<br>
-			Henrico, VA 23228</p>
-			<p>Toll Free: 866-657-0004<br>
-				Mortgage Department: 877-332-4972<br>
-				Routing Number: 251082673</p>
+			<?php print do_shortcode( '[snippet slug="footer-address" /]' ); ?>
 		</div>
 		<div class="column">
 			<h5><?php print get_menu_name_by_location( 'footer-one' ); ?></h5>
