@@ -283,7 +283,7 @@ header {
     }
 
     .quick-links {
-    	padding: 10px;
+    	padding: 10px 0;
 
 		@include respond-to( 400px ) {
 			padding: 10px 20px;
@@ -291,19 +291,23 @@ header {
 
     	select {
     		width: 100%;
-    		max-width: 320px;
+    		font-size: 17px;
+    		padding: 6px 21px;
+    		text-transform: uppercase;
     	}
 
     	@include respond-to( $bp-m ) {
     		display: block;
     		position: absolute;
     		top: 175px;
-    		right: 20px;
+    		right: 12px;
+    		width: 320px;
+    		padding: 5px 0;
     	}
 
 		@include respond-to( $bp-l ) {
 			top: 185px;
-			right: 30px;
+			right: 20px;
 		}
     }
 
