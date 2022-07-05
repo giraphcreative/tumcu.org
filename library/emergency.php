@@ -1,5 +1,6 @@
 <?php
 
+
 function the_emergency_bar() {
 
 	// narrow content
@@ -24,4 +25,3 @@ function the_emergency_bar() {
 
 }
 
-?>

@@ -29,5 +29,3 @@ function the_boxes() {
 }
 
 
-
-?>

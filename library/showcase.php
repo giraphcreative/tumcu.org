@@ -154,6 +154,3 @@ function the_photo_showcase( $height = 600 ) {
 }
 
 
-
-
-?>

@@ -13,5 +13,3 @@ function the_footer_image() {
 	}
 }
 
-
-?>

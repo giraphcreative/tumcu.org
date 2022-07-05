@@ -356,5 +356,3 @@ function cmb2_metabox_show_on_template( $display, $meta_box ) {
 add_filter( 'cmb2_show_on', 'cmb2_metabox_show_on_template', 10, 2 );
 
 
-
-?>

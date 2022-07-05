@@ -133,5 +133,3 @@ function switch_to_relative_url( $html, $id, $caption, $title, $align, $url, $si
 add_filter( 'image_send_to_editor', 'switch_to_relative_url', 10, 8 );
 
 
-
-?>

@@ -1,5 +1,6 @@
 <?php
 
+
 // calculator shortcode
 function calculator_func( $atts ) {
     
@@ -91,4 +92,4 @@ function calculator_func( $atts ) {
 }
 add_shortcode( 'calculator', 'calculator_func' );
 
-?>
+
