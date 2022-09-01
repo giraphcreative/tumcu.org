@@ -20,7 +20,7 @@ function the_partner_logos() {
 				if ( !empty( $icon['link'] ) && !empty( $icon['image'] ) ) { 
 					?>
 			<div class="partner-logo">
-				<a href="<?php print $icon['link']; ?>"><img src="<?php print $icon['image']; ?>" alt="<?php print $icon['alt-text']; ?>"></a>
+				<a href="<?php print $icon['link']; ?>" class="bypass"><img src="<?php print $icon['image']; ?>" alt="<?php print $icon['alt-text']; ?>"></a>
 			</div>
 					<?php 
 				} 

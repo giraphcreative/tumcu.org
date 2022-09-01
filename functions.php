@@ -6,6 +6,7 @@ define( "CMB_PREFIX", "_p_" );
 
 
 // include some theme-related things
+include( "library/core.php" );
 include( "library/menus.php" );
 include( "library/scripts.php" );
 
@@ -19,7 +20,7 @@ include( "library/metabox.php" );
 
 
 // include quote metaboxes/functions
-// include( "library/title.php" );
+include( "library/button.php" );
 include( "library/emergency.php" );
 include( "library/showcase.php" );
 include( "library/icons.php" );

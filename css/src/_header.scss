@@ -3,6 +3,11 @@
 header {
 	position: relative;
 	background: url(../img/bg-header-border.png) top center no-repeat;
+	border-bottom: 10px solid $red;
+
+	@include respond-to( $bp-m ) {
+		border-bottom: 0;
+	}
 
 	.logo {
 		padding: 10px 50px 10px 15px;
@@ -20,11 +25,12 @@ header {
 	nav {
 		@include clearfix;
 		position: relative;
+		margin-top: 10px;
 
 		button {
 			position: absolute;
-			right: 10px;
-			top: -150px;
+			right: 15px;
+			top: -50px;
 			width: 40px;
 			height: 40px;
 			border: 0;
@@ -63,10 +69,6 @@ header {
 					display: inline-block;
 				}
 
-				@include respond-to( $bp-l ) {
-					width: 15%;
-				}
-
 				a {
 					@include font-thin;
 					display: block;
@@ -83,12 +85,20 @@ header {
 
 					@include respond-to( $bp-m ) {
 						display: inline-block;
+						padding: 15px 10px;
+					}
+
+					@include respond-to( 900px ) {
 						padding: 15px 20px;
 					}
 
 					@include respond-to( $bp-l ) {
 						font-size: 25px;
-						padding: 15px 0;
+						padding: 15px 30px;
+					}
+
+					@include respond-to( $bp-xl ) {
+						padding: 15px 40px;
 					}
 				}
 
@@ -113,9 +123,18 @@ header {
 						position: absolute;
 						left: 0;
 						top: 55px;
-						width: 100%;
+						width: 170px;
 						background-color: rgba( lighten( $red, 5% ), .8 );
 						@include clearfix;
+					}
+
+					@include respond-to( $bp-l ) {
+						width: 100%;
+						min-width: 200px;
+					}
+
+					@include respond-to( $bp-xl ) {
+						min-width: 250px;
 					}
 
 					li {
@@ -148,13 +167,10 @@ header {
 
 	.search {
 		position: relative;
+		margin: 0 20px 0 20px;
 
 		label {
 			display: none;
-		}
-
-		@include respond-to( 400px ) {
-			margin: 0 20px 0 20px;
 		}
 
 		@include respond-to( $bp-m ) {
@@ -166,8 +182,8 @@ header {
 		}
 
 		@include respond-to( $bp-l ) {
-			top: 55px;
-			right: 20px;
+			top: 96px;
+			right: 240px;
 		}
 
 		input[type=text] {
@@ -175,11 +191,12 @@ header {
 			display: block;
 			width: 100%;
 			border: 0;
-			padding: 3px 12px 0;
+			padding: 3px 12px 0 25px;
 			font-size: 15px;
 			line-height: 38px;
 			border-top: 1px solid $grey;
 			border-bottom: 1px solid $grey;
+			border-left: 1px solid $grey;
 			color: $grey-dark;
 			background-color: transparent;
 			transition: 400ms background-color ease-in-out;
@@ -209,19 +226,19 @@ header {
 	}
 
 	.banking {
-		display: none;
+		display: block;
+        background: $red;
+        padding: 6px 25px;
+        margin: 5px 20px;
+        color: white;
+        text-transform: uppercase;
 
 		@include respond-to( $bp-m ) {
-			display: block;
 			position: absolute;
 			top: 95px;
 			right: 12px;
 	        width: 320px;
-	        background: $red;
-	        padding: 6px 25px;
-	        color: white;
-	        text-transform: uppercase;
-	        transition: all 400ms ease-in-out;
+	        margin: 0;
 
 	        &:hover {
 	        	text-decoration: none;
@@ -240,9 +257,31 @@ header {
 		}
 
 		@include respond-to( $bp-l ) {
-			top: 105px;
-			right: 20px;
+			display: none;
 		}
+    }
+
+    .banking-container {
+    	display: none;
+    	border: 1px solid $red;
+    	margin: 5px 20px;
+    	background: white;
+
+    	@include respond-to( $bp-m ) {
+    		position: absolute;
+    		top: 137px;
+    		right: 12px;
+    		width: 320px;
+    		margin: 0;
+    		z-index: 1200;
+    	}
+
+    	@include respond-to( $bp-l ) {
+    		display: block;
+    		top: 38px;
+    		right: 12px;
+    		width: 205px;
+    	}
     }
 
 	.join {
@@ -258,7 +297,6 @@ header {
 	        padding: 6px 25px;
 	        color: white;
 	        text-transform: uppercase;
-	        transition: all 400ms ease-in-out;
 
 	        &:hover {
 	        	text-decoration: none;
@@ -278,16 +316,12 @@ header {
 
 		@include respond-to( $bp-l ) {
 			top: 147px;
-			right: 20px;
+			right: 240px;
 		}
     }
 
     .quick-links {
-    	padding: 10px 0;
-
-		@include respond-to( 400px ) {
-			padding: 10px 20px;
-		}
+    	margin: 5px 70px 5px 20px;
 
     	select {
     		width: 100%;
@@ -303,11 +337,12 @@ header {
     		right: 12px;
     		width: 320px;
     		padding: 5px 0;
+    		margin: 0;
     	}
 
 		@include respond-to( $bp-l ) {
 			top: 185px;
-			right: 20px;
+			right: 240px;
 		}
     }
 

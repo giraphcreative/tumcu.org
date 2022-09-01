@@ -19,40 +19,18 @@ function the_showcase( $height = 600 ) {
 				$title = ( isset( $slide["title"] ) ? $slide["title"] : '' );
 				$subtitle = ( isset( $slide["subtitle"] ) ? $slide["subtitle"] : '' );
 				$link = ( isset( $slide["link"] ) ? $slide["link"] : '' );
-				$video = ( !empty( $slide["video_mp4"] ) && !empty( $slide["video_webm"] ) ? '<video playsinline autoplay muted loop controls poster="' . $slide["image"] . '" class="bgvid">
-    <source src="' . $slide["video_webm"] . '" type="video/webm">
-    <source src="' . $slide["video_mp4"] . '" type="video/mp4">
-</video>' : '' );
-
-				// check if it's an image or video
-				if ( p_is_image( $slide["image"] ) ) {
-					// it's an image, so resize it and generate an img tag.
-					$image = '<img src="' . $slide["image"] . '" alt="' . $title . '">';
-				} else {
-					// it's a video, so oEmbed that stuffs, yo
-					$image = apply_filter( 'the_content', $slide["image"] );
-				}
+				$content = ( isset( $slide['content'] ) ? $slide['content'] : '' );
 
 				?>
-			<div class="slide<?php print ( $key == 0 ? ' visible' : '' ); ?>">
+			<div class="slide<?php print ( $key == 0 ? ' visible' : '' ); ?>" style="background-image: url(<?php print $slide['image'] ?>);">
 				<?php if ( !empty( $link ) ) { ?><a href="<?php print $link ?>" class="<?php print ( stristr( $link, 'vimeo' ) || stristr( $link, 'youtube' ) || stristr( $link, 'google.com/maps' ) ? 'lightbox-iframe' : '' ) ?>"><?php } ?>
-				<?php 
 
-				print $image;
-
-				if ( !empty( $video ) ) {
-					print $video;
-				}
-
-				?>
 				<?php if ( !empty( $link ) ) { ?></a><?php } ?>
 				
 				<?php if ( !empty( $title ) || !empty( $subtitle ) ) { ?>
 				<div class="slide-content">
-					<div class="wrap">
 					<?php if ( !empty( $title ) ) { ?><h1><?php print $title; ?></h1><?php } ?>
-					<?php if ( !empty( $subtitle ) ) { ?><h2><?php print $subtitle; ?></h2><?php } ?>
-					</div>
+					<?php if ( !empty( $content ) ) { print apply_filters( 'the_content', $content ); } ?>
 				</div>
 				<?php } ?>
 			</div>

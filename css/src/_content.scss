@@ -2,7 +2,7 @@
 
 .container {
 	min-width: 320px;
-	max-width: 1220px;
+	max-width: 1440px;
 	margin: 0 auto;
 	background: white;
 	box-shadow: 0 0 50px $grey-dark;
@@ -13,7 +13,7 @@
 }
 
 .wrap {
-	max-width: 1220px;
+	max-width: 1440px;
 	margin: 0 auto;
 }
 
@@ -76,6 +76,7 @@
 	&.home-bottom {
 		border-top: 50px solid $red;
 		@include clearfix;
+		padding: 20px;
 
 		h2 {
 			text-align: center;

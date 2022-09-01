@@ -18,6 +18,11 @@ footer {
 	@include font-thin;
 	@include clearfix;
 
+	@include respond-to( $bp-s ) {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
 	@include respond-to( $bp-l ) {
 		padding: 30px 20px;
 	}
@@ -25,6 +30,10 @@ footer {
 	h5 {
 		font-size: 1em;
 		color: $grey-light;
+
+		&.pad {
+			padding-top: 20px;
+		}
 
 		@include respond-to( $bp-m ) {
 			font-size: 1.2em;
@@ -47,8 +56,7 @@ footer {
 		}
 
 		@include respond-to( $bp-s ) {
-			float: left;
-			width: 50%;
+			flex-basis: 50%;
 			margin: 0;
 			padding: 3px 20px;
 			
@@ -62,13 +70,13 @@ footer {
 		}
 
 		@include respond-to( $bp-l ) {
-			width: 13%;
+			flex-basis: 22%;
 			border-right: 1px solid white;
 			min-height: 250px;
 			padding: 3px 20px;
 
 			&.first {
-				width: 35%;
+				flex-basis: 34%;
 				border-right: 0;
 			}
 
@@ -82,12 +90,12 @@ footer {
 		}
 
 		@include respond-to( $bp-xl ) {
-			width: 13%;
+			flex-basis: 20%;
 			border-right: 1px solid white;
 			min-height: 280px;
 
 			&.first {
-				width: 34%;
+				flex-basis: 40%;
 				border-right: 0;
 			}
 
@@ -202,13 +210,10 @@ footer {
 		border-top: 1px solid #eee;
 		color: $grey-dark;
 		transition: color 400ms ease-in-out;
+		padding: 20px;
 
 		&:hover {
 			color: black;
-		}
-
-		@include respond-to( 768px ) {
-			padding: 20px;
 		}
 	}
 }

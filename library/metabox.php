@@ -53,13 +53,7 @@ function page_metaboxes( $meta_boxes ) {
             'sortable' => true, // beta
         )
     ) );
-    $showcase_metabox->add_group_field( $showcase_metabox_group, array(
-        'name' => 'Title',
-        'description' => 'Enter a slide title.',
-        'id'   => 'title',
-        'type' => 'text'
-    ) );
-
+    /*
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Subtitle',
         'description' => 'Enter the slide content.',
@@ -67,6 +61,22 @@ function page_metaboxes( $meta_boxes ) {
         'type' => 'wysiwyg',
         'options' => array (
             'textarea_rows' => 8
+        )
+    ) );
+    */
+    $showcase_metabox->add_group_field( $showcase_metabox_group, array(
+        'name' => 'Title',
+        'description' => 'Enter a slide title.',
+        'id'   => 'title',
+        'type' => 'text'
+    ) );
+    $showcase_metabox->add_group_field( $showcase_metabox_group, array(
+        'name' => 'Content',
+        'description' => 'Enter the content for this slide.',
+        'id'   => 'content',
+        'type' => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 5,
         )
     ) );
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
@@ -84,6 +94,7 @@ function page_metaboxes( $meta_boxes ) {
         'preview_size' => array( 350, 150 ),
         'sanitization_cb' => 'cmb2_relative_urls'
     ) );
+    /*
     $showcase_metabox->add_group_field( $showcase_metabox_group, array(
         'name' => 'Video URL (mp4)',
         'description' => 'Select a video in mp4 format for the background of the slide.',
@@ -98,6 +109,7 @@ function page_metaboxes( $meta_boxes ) {
         'type' => 'file',
         'sanitization_cb' => 'cmb2_relative_urls'
     ) );
+    */
 
 
 

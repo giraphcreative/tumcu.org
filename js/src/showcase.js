@@ -89,7 +89,7 @@ jQuery(document).ready(function($){
 		var showcase_height = function(){
 			var current_slide = get_current_slide(),
 				current_slide_img = current_slide.find( 'img:visible' );
-			console.log( current_slide_img );
+
 			if ( showcase.find( '.slide-wrapper' ).length ) {
 				var slide_wrapper_margin = showcase.find( '.slide-wrapper' ).css( 'margin-top' ).replace( 'px', '' ) * 2;
 			} else {

@@ -20,22 +20,18 @@
 		<div class="column">
 			<h5><?php print get_menu_name_by_location( 'footer-one' ); ?></h5>
 			<?php wp_nav_menu( array( 'theme_location' => 'footer-one', 'menu_class' => 'nav-menu' ) ); ?>
+			<h5 class="pad"><?php print get_menu_name_by_location( 'footer-three' ); ?></h5>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer-three', 'menu_class' => 'nav-menu' ) ); ?>
 		</div>
 		<div class="column small">
 			<h5><?php print get_menu_name_by_location( 'footer-two' ); ?></h5>
 			<?php wp_nav_menu( array( 'theme_location' => 'footer-two', 'menu_class' => 'nav-menu' ) ); ?>
-		</div>
-		<div class="column">
-			<h5><?php print get_menu_name_by_location( 'footer-three' ); ?></h5>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer-three', 'menu_class' => 'nav-menu' ) ); ?>
-		</div>
-		<div class="column small">
-			<h5><?php print get_menu_name_by_location( 'footer-four' ); ?></h5>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer-four', 'menu_class' => 'nav-menu' ) ); ?>
+			<h5 class="pad"><?php print get_menu_name_by_location( 'footer-five' ); ?></h5>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer-five', 'menu_class' => 'nav-menu' ) ); ?>
 		</div>
 		<div class="column last">
-			<h5><?php print get_menu_name_by_location( 'footer-five' ); ?></h5>
-			<?php wp_nav_menu( array( 'theme_location' => 'footer-five', 'menu_class' => 'nav-menu' ) ); ?>
+			<h5><?php print get_menu_name_by_location( 'footer-four' ); ?></h5>
+			<?php wp_nav_menu( array( 'theme_location' => 'footer-four', 'menu_class' => 'nav-menu' ) ); ?>
 		</div>
 	</footer><!-- #colophon -->
 
